@@ -46,7 +46,7 @@
 					<div class="card-body">
 							
 						<div class="row">
-							<div class="col-8 col-lg-8 col-xl-8 col-xxl-8">
+							<div class="col-10 col-lg-10 col-xl-8 col-xxl-8">
 							
 							<h6 class="">AddProposal Items:</h6>
 							
@@ -58,7 +58,7 @@
 										<table id="giftTable" class="table mb-0">
 											<thead class="thead-light">
 											<tr>
-												<th width="300px">Description</th>
+												<th width="400px">Description</th>
 												<th>Qty</th>
 												<th>Price</th>
 												<th>Total</th>
