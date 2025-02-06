@@ -186,8 +186,7 @@
 
 <script>
 
-
-$("#total_price").focus(function()
+function calculate()
 {
 	if($("#qty").val()!='' && $("#price").val())
 	{
@@ -196,6 +195,22 @@ $("#total_price").focus(function()
 		var tot=qt*pr;
 		$("#total_price").val(tot);
 	}
+}
+
+$("#total_price").focus(function()
+{
+	calculate();
+});
+
+
+$("#qty").keyup(function()
+{
+	calculate();
+});
+
+$("#price").keyup(function()
+{
+	calculate();
 });
 
 
