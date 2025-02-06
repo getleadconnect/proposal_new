@@ -15,8 +15,8 @@
         }
 
         .page {
-            /*width: 18cm;
-            min-height: 26cm;*/
+            /*width: 18cm;*/
+            min-height: 26cm;
             margin: 0 auto;
             padding: 1cm;
             border-radius: 5px;
@@ -231,6 +231,9 @@
         ol li {
             padding: 3px 0px;
             color: #313131;
+			line-height:25px;
+			font-size:16px
+			font-family: 'Poppins';
         }
        .terms h2{margin-top: 40px ;}
 	   .terms{margin-bottom: 20px ;}
@@ -260,7 +263,7 @@
 <body style="font-family: 'Poppins';">
     <div class="page">
         <div class="page-header">
-            <div class="logo"><img src="/uploads/logos/ezbizz-logo.png" alt="Logo"> </div>
+            <div class="logo"><img src="/assets/images/ezbizz-logo.png" alt="Logo"> </div>
 
             <div class="contact-info">
                 <p class="company-title">{{$user_dt->company_name}}</p>
@@ -357,6 +360,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="page terms">
         <h2>Generic Terms and Condition:</h2>
