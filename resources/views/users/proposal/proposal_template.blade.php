@@ -260,7 +260,7 @@
 <body style="font-family: 'Poppins';">
     <div class="page">
         <div class="page-header">
-            <div class="logo"><img src="/uploads/{{$user_dt->logo}}" alt="Logo"> </div>
+            <div class="logo"><img src="/uploads/logos/ezbizz-logo.png" alt="Logo"> </div>
 
             <div class="contact-info">
                 <p class="company-title">{{$user_dt->company_name}}</p>
