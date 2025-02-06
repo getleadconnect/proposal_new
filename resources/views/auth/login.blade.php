@@ -53,7 +53,7 @@
 							<div class="col-12">
 								<label for="mobile" class="form-label">Mobile<span class="required">*</span></label>
 								<br>
-								<input type="hidden" class="form-control" name="country_code" id="country_code" value="91"  required>
+								<input type="hidden" class="form-control" name="country_code" id="country_code" value="971"  required>
 								<input type="tel" class="form-control" pattern="[0-9]*" name="mobile" id="mobile"  onkeypress="return /[0-9]/i.test(event.key)" minlength=8 maxlength=15 required autocomplete="off">
 							</div>
 						
