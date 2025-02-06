@@ -129,22 +129,22 @@
 								@csrf
 										<div class="mb-2 row">
 											<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
-												<label for="example-text-input" class="col-form-label">Company Name</label>
+												<label for="example-text-input" class="col-form-label">Company Name<span style="color:red;">*</span></label>
 												<input class="form-control" type="text" name="company_name" id="company_name"  required>
 											</div>
 
 											<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
-											<label for="example-text-input" class="col-form-label">Address</label>
+											<label for="example-text-input" class="col-form-label">Address<span style="color:red;">*</span></label>
 											<textarea class="form-control"  name="address" id="address"  required></textarea>
 											</div>
 				
 											<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
-											<label for="example-text-input" class="col-form-label">Location</label>
+											<label for="example-text-input" class="col-form-label">Location<span style="color:red;">*</span></label>
 											<input class="form-control" type="text" name="location" id="location"  required>
 											</div>
 
 											<div class="col-2 col-lg-2 col-xl-2 col-xxl-2">
-											<label for="example-text-input" class="col-form-label">Country</label>
+											<label for="example-text-input" class="col-form-label">Country<span style="color:red;">*</span></label>
 											<input class="form-control" type="text" name="country" id="country"  required>
 											</div>
 											
