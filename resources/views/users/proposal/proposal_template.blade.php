@@ -231,9 +231,9 @@
         ol li {
             padding: 3px 0px;
             color: #313131;
-			line-height:25px;
-			font-size:16px
+			font-size:16px;
 			font-family: 'Poppins';
+			line-height:25px;
         }
        .terms h2{margin-top: 40px ;}
 	   .terms{margin-bottom: 20px ;}
@@ -255,7 +255,9 @@
         }
 		
 	@page { margin: 10px; }
-	body { margin: 10px; }
+	body { margin: 10px; 
+	font-family: 'Poppins';
+	}
     </style>
 	
 </head>
@@ -323,7 +325,7 @@
                 <tbody>
 				@php
 				  $tot=0;
-				  $currency="";
+				  $currency=$user_dt->currency;
 				@endphp
 				
 				@foreach($pitems as $row)
@@ -335,15 +337,15 @@
                     <tr>
                         <td>{{$row->description}}</td>
                         <td>{{$row->qty}}</td>
-                        <td>{{$row->price." ".$row->currency}}</td>
-                        <td>{{$row->total_price." ".$row->currency}}</td>
+                        <td>{{$row->price." ".$user_dt->currency}}</td>
+                        <td>{{$row->total_price." ".$user_dt->currency}}</td>
                     </tr>
                 @endforeach
                     <!-- More rows here -->
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4" style="text-align: right;">Total: {{number_format($tot,2,'.',',')}}&nbsp;{{$currency}}</td>
+                        <td colspan="4" style="text-align: right;">Total: {{number_format($tot,2,'.',',')}}&nbsp;{{$user_dt->currency}}</td>
                     </tr>
                 </tfoot>
             </table>
