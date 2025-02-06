@@ -17,7 +17,7 @@ use Log;
 use Carbon\Carbon;
 use DB;
 
-class DashboardController extends Controller
+class DashboardUserController extends Controller
 {
   public function __construct()
   {
@@ -26,12 +26,12 @@ class DashboardController extends Controller
   
   public function index()
   {
-	$user_id=User::getVendorId();
+	$vendor_id=User::getVendorId();
 	
 	$data['total_count']=Proposal::proposalCount($vendor_id);
 	$data['this_month']=Proposal::proposalThisMonth($vendor_id);
 		
-	return view('users.dashboard.dashboard',compact('data');
+	return view('users.dashboard.dashboard',compact('data'));
   }	
 
       

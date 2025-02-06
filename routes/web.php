@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\DashboardUserController;
 
 
 use App\Http\Controllers\User\ProposalController;
@@ -48,7 +49,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'authware'], func
 Route::group(['prefix'=>'users','as'=>'users.','middleware' => 'authware'], function()
 {
 
-Route::controller(DashboardController::class)->group(function() {
+Route::controller(DashboardUserController::class)->group(function() {
 	Route::get('/dashboard', 'index')->name('dashboard');
 });
 
