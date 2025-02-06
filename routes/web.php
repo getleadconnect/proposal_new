@@ -7,7 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\DashboardUserController;
-
+use App\Http\Controllers\User\UserProfileController;
 
 use App\Http\Controllers\User\ProposalController;
 
@@ -71,10 +71,9 @@ Route::controller(ProposalController::class)->group(function() {
 });
 
 
-
 Route::controller(UserProfileController::class)->group(function() {
 
-	Route::get('/user-profile', 'index')->name('user-profile');
+	Route::get('/profile', 'index')->name('profile');
 	Route::post('/update-user-profile', 'updateUserProfile')->name('update-user-profile');
 	Route::post('/update-profile-image', 'uploadProfileImage')->name('update-profile-image');
 	Route::post('/change-password', 'changePassword')->name('change-password');

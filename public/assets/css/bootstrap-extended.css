@@ -852,3 +852,31 @@
 	color: #16191d;
 	border-color: rgb(0 0 0 / 12%);
 }
+
+.show
+{
+	display:block;
+}
+
+.hide{
+	display:none;
+}
+
+.btn-outline-none
+{
+	border:none !important;
+}
+
+.text-right
+{
+	text-align:right;
+}
+.text-left
+{
+	text-align:left;
+}
+
+.text-center
+{
+	text-align:center;
+}

@@ -24,6 +24,11 @@ class DashboardUserController extends Controller
      //$this->middleware('admin');
   }
   
+  
+  
+  //$startDate = Carbon::now()->startOfWeek();
+  //$endDate = Carbon::now()->endOfWeek();
+  
   public function index()
   {
 	$vendor_id=User::getVendorId();

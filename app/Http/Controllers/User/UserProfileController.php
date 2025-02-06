@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Facades\FileUpload;
 
 use App\Models\User;
-use App\Models\PurchaseScratch;
-use App\Models\ScratchCount;
+use App\Models\UserDetail;
 
 use Validator;
 
@@ -28,19 +27,9 @@ class UserProfileController extends Controller
   
   public function index()
   {
-	$user_id=User::getVendorId();
-
-	$scount=ScratchCount::where('fk_int_user_id',$user_id)->pluck('balance_count')->first();
-	$usr=User::where('pk_int_user_id',$user_id)->get()->map(function($q)
-	{
-		  if($q->vchr_logo!="")
-			  $q->user_logo=FileUpload::viewFile($q->vchr_logo,'local');
-		  else
-			  $q->user_logo=asset('assets/images/avatars/1.png');
-		  return $q;
-	  })->first();
-
-	return view('users.settings.user_profile',compact('scount','usr'));
+	$vendor_id=User::getVendorId();
+	$udt=UserDetail::where('vendor_id',$vendor_id)->first();
+	return view('users.profile.user_profile',compact('udt'));
   }	
   
 

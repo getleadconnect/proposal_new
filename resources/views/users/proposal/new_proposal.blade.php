@@ -58,7 +58,7 @@
 										<table id="giftTable" class="table mb-0">
 											<thead class="thead-light">
 											<tr>
-												<th width="500px">Description</th>
+												<th width="300px">Description</th>
 												<th>Qty</th>
 												<th>Price</th>
 												<th>Total</th>
