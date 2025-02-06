@@ -1,3 +1,15 @@
+/*
+ * jQuery Country code picker plugin v 0.3 
+ * https://github.com/fr33land/jquery-country-code-picker
+ * 
+ * Author: Rokas Sabaliauskas(fr33land) 
+ * Email: rrokass@gmail.com 
+ *  
+ * Copyright 2018
+ * Licensed under the MIT license. 
+ * http://www.opensource.org/licenses/mit-license.php 
+ */
+ 
 (function(factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
@@ -13,13 +25,10 @@
   "use strict";
 
   var pluginName = "ccPicker";
-  var dataUrl = typeof dataUrls !== 'undefined' ? dataUrls : null;
   var defaults = {
     countryCode: "LT",
     dialCodeFieldName: "phoneCode",
-    dataUrl: dataUrl? "../../json/data.json" : "../json/data.json",
-	  countryFilter: true,
-    searchPlaceHolder: "Search"
+    dataUrl: "data.json"
   };
 
 
@@ -30,7 +39,6 @@
     this._defaults = defaults;
     this._name = pluginName;
     this._list = {};
-	this._filter = {};
     this._ccData = {};
     this._ccPicker = {};
     this._ccDialCodeTrackerField = {};
@@ -42,7 +50,6 @@
       self._ccPicker.html(self.createCountryListItem(cc.code, cc.phoneCode));
 	  self._ccDialCodeTrackerField.val(cc.phoneCode);
 	  self._ccSelectedCountry = {code: cc.code, phoneCode: cc.phoneCode};
-	  $(self.element).trigger("countrySelect", cc);
     }
 
     function setCountryByCode(code) {
@@ -50,30 +57,11 @@
       self._ccPicker.html(self.createCountryListItem(cc.code, cc.phoneCode));
 	  self._ccDialCodeTrackerField.val(cc.phoneCode);
 	  self._ccSelectedCountry = {code: cc.code, phoneCode: cc.phoneCode};
-	  $(self.element).trigger("countrySelect", cc);
-    }
-
-   function disable() {
-      $(self.element).prop('disabled', true);
-      self._ccPicker.off("click");
-      self._ccPicker.css("cursor", "default");
-    }
-
-    function enable() {
-      $(self.element).prop('disabled', false);
-      self._ccPicker.off("click");
-      self._ccPicker.on("click", function (e) {
-        $.isEmptyObject(self._list) ? self.createCountryList(self) : self.destroyCountryList(self);
-        e.stopPropagation();
-      });
-      self._ccPicker.css("cursor", "pointer");
     }
 
     return {
       setCountryByPhoneCode: setCountryByPhoneCode,
-      setCountryByCode: setCountryByCode,
-      disable: disable,
-      enable: enable
+      setCountryByCode: setCountryByCode
     };
   }
 
@@ -91,14 +79,8 @@
       }).insertAfter(this.element);
       this._ccPicker.prepend(this.createCountryListItem(this.options.countryCode.toLowerCase(), cc.phoneCode));
 	  this._ccSelectedCountry = {code: this.options.countryCode.toLowerCase(), phoneCode: cc.phoneCode};
-      this._ccPicker.on("click", function (e) {
+      this._ccPicker.on("click", function () {
         $.isEmptyObject(c._list) ? c.createCountryList(c) : c.destroyCountryList(c);
-	e.stopPropagation();
-      });
-	$("body").on("click", function () {
-        if (!$.isEmptyObject(c._list)) {
-          c.destroyCountryList(c);
-        }
       });
     },
     loadCountryData: function (e) {
@@ -110,8 +92,8 @@
         success: function (data) {
           e._ccData = data;
         }
-      });
-
+      }); 
+	  
     },
     findCountryByPhoneCode: function (e, code) {
       return $.grep(e._ccData, function (o) {
@@ -124,11 +106,11 @@
       })[0];
     },
     createCountryList: function (e) {
-      var zIndex = e._ccPicker.css("z-index") === "auto" ? 1 : Number(e._ccPicker.css("z-index")) + 10;
-      e._list = $("<ul/>", {"class": "cc-picker-code-list"}).appendTo(".country-code-row  ");
+      var zIndex = e._ccPicker.css("z-index") === "auto" ? 0 : Number(e._ccPicker.css("z-index")) + 10;
+      e._list = $("<ul/>", {"class": "cc-picker-code-list"}).appendTo("body");
       e._list.css({
-       // top: e._ccPicker.offset().top + e._ccPicker.outerHeight() + (e.options.countryFilter === true ? 25 : 0),
-        //left: e._ccPicker.offset().left,
+        top: e._ccPicker.offset().top + e._ccPicker.outerHeight(),
+        left: e._ccPicker.offset().left,
         "z-index": zIndex
       });
       $.each(e._ccData, function (key, val) {
@@ -143,32 +125,10 @@
 			$(l).addClass("cc-picker-selected-country");
 		}
       });
-
-	  if (e.options.countryFilter) {
-        e._filter = $("<input/>", {"class": "cc-picker-code-filter", "placeholder": e.options.searchPlaceHolder}).insertBefore(e._list);
-        e._filter.css({
-          //top: e._ccPicker.offset().top + e._ccPicker.outerHeight(),
-         // left: e._ccPicker.offset().left,
-          "z-index": zIndex
-        });
-        e._filter.on("click", function (e) {
-          e.stopPropagation();
-        });
-        e._filter.on("keyup", function (e) {
-          var text = $(this).val();
-          $('.cc-picker-code-list li:not(:ccContains("' + text + '"))').hide();
-          $('.cc-picker-code-list li:ccContains("' + text + '")').show();
-        });
-      }
     },
     destroyCountryList: function (e) {
       e._list.remove();
       e._list = {};
-
-	  if (e.options.countryFilter) {
-        e._filter.remove();
-        e._filter = {};
-      }
     },
     selectCountry: function (e, c) {
       var i = $(c).data("countryItem");
@@ -179,12 +139,6 @@
     },
     createCountryListItem: function (countryCode, dialCode) {
       return '<div class="cc-picker-flag ' + countryCode.toLowerCase() + '"></div><span class="cc-picker-code">' + dialCode + '</span> ';
-    }
-  });
-
-   $.extend($.expr[":"], {
-    ccContains: function (a, i, m) {
-      return $(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
     }
   });
 

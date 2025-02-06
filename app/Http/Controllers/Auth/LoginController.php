@@ -68,7 +68,7 @@ class LoginController extends Controller
     {
 
 		$validate = Validator::make(request()->all(),[
-			'email' => 'required', 
+			'mobile' => 'required', 
             'password' => 'required',
         ]);
 		
@@ -80,10 +80,13 @@ class LoginController extends Controller
 		else
 		{
 		
-			$credentials = $request->only('email', 'password');
-			$country_code = $request->only('email_phoneCode');
+			$credentials['mobile']=$request->country_code.$request->mobile;
+			$credentials['password']=$request->password;
 			
-			$user = User::where('status',1)->where('email', $credentials['email'])->first();
+						
+			$country_code = $request->only('mobile_phoneCode');
+			
+			$user = User::where('status',1)->where('user_mobile', $credentials['email'])->first();
 			
 			if ($user && Hash::check($credentials['password'], $user->password)) 
 			{

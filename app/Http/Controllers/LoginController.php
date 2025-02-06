@@ -69,26 +69,25 @@ class LoginController extends Controller
     {
 
 		$validate = Validator::make(request()->all(),[
-			'email' => 'required', 
+			'mobile' => 'required', 
             'password' => 'required',
         ]);
 		
 		if($validate->fails())
 		{
 			Session::flash('error','Invalid credentials. Try again');
-			dd("ok");
 			return back()->withErrors(['msg'=>"Invalid credenstials"]);
 		}
 		else
 		{
 		
-		Try
+		try
 		{
-			$credentials = $request->only('email', 'password');
-			$country_code = $request->only('email_phoneCode');
+			$credentials['mobile'] = substr($request->full_number,1);   //intlInput variable for mobile
+			$credentials['password'] = $request->password;
 			
-			$user = User::where('status',1)->where('email', $credentials['email'])->first();
-			
+			$user = User::where('status',1)->where('user_mobile', $credentials['mobile'])->first();
+
 			if ($user && Hash::check($credentials['password'], $user->password)) 
 			{
 				Auth::login($user);
