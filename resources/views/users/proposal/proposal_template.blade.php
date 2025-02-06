@@ -5,22 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposal EZBIZZ</title>
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Poppins','sans-serif';
             margin: 0;
             padding: 0;
         }
 
         .page {
-            width: 21cm;
-            min-height: 29.7cm;
+            /*width: 18cm;
+            min-height: 26cm;*/
             margin: 0 auto;
             padding: 1cm;
             border-radius: 5px;
             background: white;
             box-sizing: border-box;
             position: relative;
+			
         }
 
         .company-title {
@@ -37,6 +40,7 @@
         .logo {
             width: 100%;
             display: inline-block;
+			min-height:100px;
         }
 
         .page-header {
@@ -89,14 +93,15 @@
         }
 
         .proposal {
-            padding: 84px 54px;
+            padding: 50px;
             background-color: #292563;
-            position: absolute;
+            /*position: absolute;*/
             bottom: 0;
             left: 0;
             right: 0;
             margin: 0;
             box-sizing: border-box;
+			margin-right:10px;
         }
 
         .proposal-dates {
@@ -109,7 +114,7 @@
 
         .proposal-dates p {
             float: left;
-            width: 30%;
+            width: 33.33%;
             text-align: left;
             margin: 0;
         }
@@ -240,8 +245,11 @@
                 margin: 0;
             }
         }
+		
+	@page { margin: 10px; }
+	body { margin: 10px; }
     </style>
-	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	
 </head>
 
 <body style="font-family: 'Poppins';">
