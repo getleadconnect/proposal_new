@@ -191,7 +191,7 @@ $("#total_price").focus(function()
 {
 	if($("#qty").val()!='' && $("#price").val())
 	{
-		var qt=parseIn($("#qty").val());
+		var qt=parseInt($("#qty").val());
 		var pr=parseInt($("#price").val());
 		var tot=qt*pr;
 		$("#total_price").val(tot);
