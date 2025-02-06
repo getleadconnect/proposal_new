@@ -58,10 +58,10 @@
 										<table id="giftTable" class="table mb-0">
 											<thead class="thead-light">
 											<tr>
-												<th width="500px">Description</th>
-												<th>Qty</th>
-												<th>Price</th>
-												<th>Total</th>
+												<th width="500px">Description<span style="color:red;">*</span></th>
+												<th>Qty<span style="color:red;">*</span></th>
+												<th>Price<span style="color:red;">*</span></th>
+												<th>Total<span style="color:red;">*</span></th>
 												<th>Action</th>
 											</tr>
 											</thead>
