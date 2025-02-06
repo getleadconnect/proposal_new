@@ -265,7 +265,7 @@
 <body style="font-family: 'Poppins';">
     <div class="page">
         <div class="page-header">
-            <div class="logo"><img src="/assets/images/ezbizz-logo.png" alt="Logo"> </div>
+            <div class="logo"><img src="{{public_path('/assets/images/ezbizz-logo.png')}}" alt="Logo"> </div>
 
             <div class="contact-info">
                 <p class="company-title">{{$user_dt->company_name}}</p>
