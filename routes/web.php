@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\ProposalController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::controller(LoginController::class)->group(function() {
