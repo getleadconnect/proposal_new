@@ -85,15 +85,15 @@
             padding: 3px 0px;
             margin: 0;
             color: #fff;
-            font-family: Roboto;
             font-size: 14px;
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+			font-family:'Poppins','sans-serif';
         }
 
         .proposal {
-            padding: 50px;
+            padding: 50px 50px 80px 50px;
             background-color: #292563;
             /*position: absolute;*/
             bottom: 0;
@@ -102,6 +102,8 @@
             margin: 0;
             box-sizing: border-box;
 			margin-right:10px;
+			font-family:'Poppins','sans-serif';
+			
         }
 
         .proposal-dates {
@@ -110,6 +112,7 @@
             display: inline-block;
             width: 100%;
             color: #fff;
+			font-family:'Poppins','sans-serif';
         }
 
         .proposal-dates p {
@@ -117,6 +120,7 @@
             width: 33.33%;
             text-align: left;
             margin: 0;
+			font-family:'Poppins','sans-serif';
         }
 
         .proposal-dates p span.small {
@@ -128,6 +132,7 @@
             line-height: normal;
             padding-bottom: 5px !important;
             display: block;
+			font-family:'Poppins','sans-serif';
         }
 
         .table {
@@ -298,7 +303,7 @@
          
     </div>
 
-    <div class="page">
+    <div class="page" style="padding-top:0px !important;">
         <div class="page-header" style="margin-left: 0px;">
             <h2 style="text-align: left;">Service we provide</h2>
         </div>
