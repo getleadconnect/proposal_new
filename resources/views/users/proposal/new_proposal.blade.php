@@ -186,6 +186,19 @@
 
 <script>
 
+
+$("#total_price").focus(function()
+{
+	if($("#qty").val()!='' && $("#price").val())
+	{
+		var qt=parseIn($("#qty").val());
+		var pr=parseInt($("#price").val());
+		var tot=qt*pr;
+		$("#total_price").val(tot);
+	}
+});
+
+
    $(document).on('click','#imgUpload',function(e){
         $('#picField').trigger('click');
         scrId = $(this).data('id')
