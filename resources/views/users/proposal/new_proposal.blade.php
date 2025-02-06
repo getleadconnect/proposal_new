@@ -48,7 +48,7 @@
 						<div class="row">
 							<div class="col-10 col-lg-10 col-xl-10 col-xxl-10">
 							
-							<h6 class="">AddProposal Items:</h6>
+							<h6 class="">AddProposal Items: (<span style="color:red;">*:-<small>Required</small></span>)</h6>
 							
 							<div style="margin-top:20px;">
 							<form id="formProposalItems"  enctype="multipart/form-data">
@@ -122,7 +122,7 @@
 							<div class="row">
 							  <div class="col-12 col-lg-12 col-xl-12 col-xxl-12">
 							 
-							 <h6 class="mb-2 mt-2">Add Customer Details:</h6>
+							 <h6 class="mb-2 mt-2">Add Customer Details:(<span style="color:red;">*:-<small>Required</small></span>)</h6>
 							 
 							 
 								<form id="formCustomer" method="Post" action="{{url('users/save-proposal')}}" enctype="multipart/form-data">
