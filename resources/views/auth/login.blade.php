@@ -13,7 +13,6 @@
   <link href="{{url('assets/css/icons.css')}}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
   <link href="{{ url('assets/intl-tel-input17.0.3/intlTelInput.min.css')}}" rel="stylesheet"/>
   
   <!-- loader-->
@@ -97,9 +96,6 @@
 
   <!--plugins-->
   <script src="{{url('assets/js/jquery.min.js')}}"></script>
-  
-  
-
   <script src="{{url('assets/js/pace.min.js')}}"></script>
   <script src="{{url('assets/intl-tel-input17.0.3/intlTelInput.min.js')}}"></script>
 	
@@ -127,7 +123,7 @@ var phone_number = window.intlTelInput(document.querySelector("#mobile"), {
 	  preferredCountries:["AE","IN"],
 	  hiddenInput: "full_number",
 	  utilsScript:"{{url('assets/intl-tel-input17.0.3/utils.js')}}"
-	});
+ });
 
 </script>
 

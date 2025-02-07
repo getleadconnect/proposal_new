@@ -22,7 +22,7 @@
   <link href="{{url('assets/css/icons.css')}}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+  
   <link href="{{url('assets/fontawesome-free-5.15-web/css/all.css')}}" rel="stylesheet" />
   <link href="{{url('assets/plugins/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" />
   <link href="{{url('assets/plugins/toastr/css/toastr.min.css')}}" rel="stylesheet" />
@@ -36,7 +36,8 @@
   <link href="{{url('assets/css/light-theme.css')}}" rel="stylesheet" />
   <link href="{{url('assets/css/semi-dark.css')}}" rel="stylesheet" />
   <link href="{{url('assets/css/header-colors.css')}}" rel="stylesheet" />
-
+  <link href="{{url('assets/intl-tel-input17.0.3/intlTelInput.min.css')}}" rel="stylesheet"/>
+  
   <title>GETLEAD</title>
 </head>
 

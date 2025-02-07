@@ -43,8 +43,7 @@
                 <div class="card shadow-sm border-0 overflow-hidden">
                   <div class="card-body pt-3">
                       <div class="profile-avatar text-center mt-5">
-
-						<img src="{{$udt->logo}}" class="rounded-circle shadow" width="120" height="120" data-id="{{$udt->id}}" id="imgUpload" style="cursor:pointer" title="Click to change image">
+						<img src="{{url('uploads'.'/'.$udt->logo)}}" class="shadow" width="150" height="100%" data-id="{{$udt->id}}" id="imgUpload" style="cursor:pointer" title="Click to change image">
 						<label id="msg_image_upload" class="mt-2" style="display:none;color:red;">Please Wait...!</label>			
 					  </div>
 					  
@@ -52,7 +51,7 @@
 						@csrf
 							<div style="height:0px;overflow:hidden"> 
 							<input type="file" id="picField" name="picField" onchange="$('#msg_image_upload').css('display','block'); this.form.submit()" class="d-none"/> 
-							<input type="hidden" id="userId" name="userId" /> 
+							<input type="hidden" id="userDtId" name="userDtId" /> 
 							</div>
 					  </form> 
 
@@ -145,10 +144,13 @@
 						</div>
 						
 						<div id="edit_profile" class="hide ps-5">
+						
+						<label> <span class="required">*: All Fields are required</span></label>
+						
 						<form id="formUpdateProfile">
 						@csrf
 						
-						<input type="hidden" name="user_id" id="user_id" value="{{$udt->id}}">
+						<input type="hidden" name="user_dt_id" id="user_dt_id" value="{{$udt->id}}">
 						
 								<div class="row mb-2 mt-2" >
 									<div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
@@ -156,13 +158,13 @@
 										<input type="text" class="form-control"  name="company_name" id="company_name"  value="{{$udt->company_name}}" placeholder="Name" required>
 									</div>
 								</div>
-
+								
 								<div class="row mb-2" >
 									<div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
 										<label for="mobile" class="form-label">Mobile<span class="required">*</span></label>
-										<input type="hidden" class="form-control" name="country_code" id="country_code" value="91"  required>
+										<input type="hidden" class="form-control" name="country_code" id="country_code" value="{{$udt->country_code}}"  required>
 										<br>
-										<input type="tel" class="form-control" name="mobile" id="mobile" value="{{$udt->mobile}}" minlength=6 maxlength=15 required>
+										<input type="tel" class="form-control" name="mobile" id="mobile" value="+{{$udt->country_code.$udt->mobile_number}}" minlength=6 maxlength=15 required>
 									</div>
 								</div>
 
@@ -175,8 +177,8 @@
 								
 								<div class="row mb-2" >
 									<div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
-										<label for="address" class="form-label">Address</label>
-										<textarea rows=3  class="form-control"  name="address" id="address" placeholder="Address" > {{$udt->address }}</textarea>
+										<label for="address" class="form-label">Address<span class="required">*</span></label>
+										<textarea rows=3  class="form-control"  name="address" id="address" placeholder="Address" required> {{$udt->address }}</textarea>
 									</div>
 								</div>
 								
@@ -202,9 +204,14 @@
 								</div>
 								
 								<div class="row mb-2" >
-									<div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
+									<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
 										<label for="designation" class="form-label">Currency<span class="required">*</span></label>
-										<input type="text" class="form-control"  name="currency" id="currency" value="{{$udt->currency}}" placeholder="currency" required>
+										<select class="form-select"  name="currency" id="currency"  required >
+										<option value=''>--select--</option>
+										<option value="AED" @if($udt->currency=='AED'){{ 'selected' }} @endif >AED</option>
+										<option value="₹" @if($udt->currency=='₹'){{ 'selected' }} @endif>Rs(₹)</option>
+										<option value="$" @if($udt->currency=='$'){{ 'selected' }} @endif>Dolar($)</option>
+										</select>
 									</div>
 								</div>
 
@@ -228,6 +235,8 @@
             </div><!--end row-->
 			
 
+
+
 @push('scripts')
 
 @if(Session::get('success'))
@@ -245,10 +254,17 @@
 
 <script>
 
+   var phone_number = window.intlTelInput(document.querySelector("#mobile"), {
+	  separateDialCode: true,
+	  preferredCountries:["AE","IN"],
+	  hiddenInput: "full_number",
+	  utilsScript:"{{url('assets/intl-tel-input17.0.3/utils.js')}}"
+	});
+
    $(document).on('click','#imgUpload',function(e){
         $('#picField').trigger('click');
         usrId = $(this).data('id')
-        $('#userId').val(usrId);
+        $('#userDtId').val(usrId);
     })
 
 
@@ -306,17 +322,21 @@ var addValidator=$('#formUpdateProfile').validate({
 	
 	rules: {
 		
-		user_name: {required: true,},
+		company_name: {required: true,},
 		email: {required: true,},
-		designation: {required: true,},
-		company: {required: true,},
-		location: {required: true,},
-		address: {required: true,},
 		mobile: {required: true,},
+		address: {required: true,},
+		location: {required: true,},
+		country: {required: true,},
+		currency: {required: true,},
 	},
 
 	submitHandler: function(form) 
 	{
+
+	   var code=phone_number.getSelectedCountryData()['dialCode'];
+	   $("#country_code").val(code);	
+
 
 		$.ajax({
 		url: "{{ url('users/update-user-profile') }}",
@@ -325,7 +345,6 @@ var addValidator=$('#formUpdateProfile').validate({
 		success: function(result){
 			if(result.status == 1)
 			{
-				$('#datatable').DataTable().ajax.reload(null,false);
 				toastr.success(result.msg);
 				location.reload();
 			}

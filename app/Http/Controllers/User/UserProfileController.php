@@ -44,12 +44,13 @@ public function edit($id)
     {
 
         $validator=validator::make($request->all(),[
-		'user_name' => 'required|max:25',
+		'company_name' => 'required',
         'email' => 'required|email',
         'mobile' => 'required|numeric|digits_between:8,15',
-        'designation'=>'required',
-		'company'=>'required',
-		'location'=>'required'
+        'address'=>'required',
+		'location'=>'required',
+		'country'=>'required',
+		'currency'=>'required'
 		]);
         if ($validator->fails()) 
 		{
@@ -59,25 +60,24 @@ public function edit($id)
 		{
 			try{
 
-				$user_id=$request->user_id;
-            	
+				$user_dt_id=$request->user_dt_id;
+				
 				$data=[
-					'vchr_user_name'=>$request->user_name,
+					'company_name'=>$request->company_name,
 					'email'=>$request->email,
-					'countrycode'=>$request->country_code,
-					'mobile'=>trim($request->mobile),
-					'vchr_user_mobile'=>$request->country_code.trim($request->mobile),
-					'designation_id'=>$request->designation,
-					'company_name'=>$request->company,
-					'location'=>$request->location,
+					'country_code'=>$request->country_code,
+					'mobile_number'=>trim($request->mobile),
 					'address'=>$request->address,
+					'location'=>$request->location,
+					'country'=>$request->country,
+					'currency'=>$request->currency,
 				];
 						
-				$result=User::where('pk_int_user_id',$user_id)->update($data); 
+				$result=UserDetail::where('id',$user_dt_id)->update($data); 
 				
 				if($result)
         		{   
-					return response()->json(['msg'=>'User successfully updated.','status'=>true]);
+					return response()->json(['msg'=>'User details successfully updated.','status'=>true]);
         		}
         		else
         		{
@@ -95,21 +95,26 @@ public function edit($id)
 public function uploadProfileImage(Request $request)
 {
 		$file_image= $request->picField;  
-        $usr =  User::where('pk_int_user_id',$request->userId)->first();
-		if($usr and $usr->vchr_logo!="")
+	
+        $usr =  UserDetail::where('id',$request->userDtId)->first();
+		if($usr and $usr->logo!="")
 		{
-			FileUpload::deleteFile($usr->vchr_logo,'local');
+			Storage::disk('local')->delete($usr->logo);
 		}			
 		
-        $file_image= $request->picField;
-        $path_list='/user_images/';
-        $imgName = mt_rand(). '.' . $file_image->getClientOriginalExtension();
-        FileUpload::uploadFile($file_image, $path_list,$imgName,'local');
-
-        $usr->vchr_logo=$path_list.$imgName;                    
+		if($request->file('picField'))
+		{
+			$file_image= $request->picField;
+			$fname = 'logos/'.mt_rand()."_".date('his').'.'. $file_image->getClientOriginalExtension();
+			Storage::disk('local')->put($fname, file_get_contents($file_image));
+        		//$fname2=Storage::disk('local')->putFile("uploads/logos",$request->file('picField'), 'public');
+				//$fname2=str_replace("video_files/","",$fname2);
+		}
+		
+        $usr->logo=$fname;                    
         $usr->save();
 
-        return redirect()->back()->with('success', 'Image update successfully!');
+        return redirect()->back()->with('success', 'Logo successfully updated!');
 }
 
 public function changePassword(Request $request)

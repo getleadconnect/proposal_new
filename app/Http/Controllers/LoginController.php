@@ -83,11 +83,12 @@ class LoginController extends Controller
 		
 		try
 		{
+			
 			$credentials['mobile'] = substr($request->full_number,1);   //intlInput variable for mobile
 			$credentials['password'] = $request->password;
 			
 			$user = User::where('status',1)->where('user_mobile', $credentials['mobile'])->first();
-
+			
 			if ($user && Hash::check($credentials['password'], $user->password)) 
 			{
 				Auth::login($user);

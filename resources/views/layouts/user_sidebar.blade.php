@@ -29,6 +29,19 @@
               </a>
             </li>
 			
+			<li>
+              <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                </div>
+                <div class="menu-title">Settings</div>
+              </a>
+              <ul>
+                <li> <a href="{{url('users/profile')}}"><i class="bi bi-circle"></i>My Profile</a>
+                </li>
+                
+              </ul>
+            </li>
+			
 			<!--<li>
               <a href="{{url('users/users-list')}}">
                 <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
