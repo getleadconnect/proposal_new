@@ -345,8 +345,18 @@ var addValidator=$('#formUpdateProfile').validate({
 		success: function(result){
 			if(result.status == 1)
 			{
-				toastr.success(result.msg);
-				location.reload();
+				Swal.fire({
+					  title: "SUCCESS!",
+					  text: result.msg,
+					  //icon: "info",
+					  confirmButtonColor: "#3085d6",
+					  confirmButtonText: "Ok"
+					}).then((result) => {
+					  if (result.isConfirmed) {
+						 location.reload(); 
+					  }
+					  
+					});
 			}
 			else
 			{
