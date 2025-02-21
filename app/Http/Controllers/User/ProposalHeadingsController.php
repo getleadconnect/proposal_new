@@ -151,6 +151,7 @@ public function store(Request $request)
 		
         ->addColumn('action', function ($row)
         {
+			$del='';
 			if($row->id>7)
 			$del='<li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>';
 		
@@ -291,8 +292,9 @@ public function destroy($id)
 		
         ->addColumn('action', function ($row)
         {
+			$del='';
 			if($row->id>5)
-			$del='<li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>';
+				$del='<li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>';
 		
 		
 			$action='<div class="fs-5 ms-auto dropdown">
