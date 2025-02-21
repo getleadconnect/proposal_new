@@ -41,6 +41,20 @@
   <title>GETLEAD</title>
 </head>
 
+<style>
+.pro-head > a
+{
+	line-height:32px;
+}
+.pro-head > a:hover
+{
+	background-color:#f1f1f1;
+	border-radius:5px;
+}
+
+
+</style>
+
 <body>
 
 
@@ -121,7 +135,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                    <li>
-                      <a class="dropdown-item" href="pages-user-profile.html">
+                      <a class="dropdown-item" href="javascript:;">
                          <div class="d-flex align-items-center">
                            <div class=""><i class="bi bi-person-fill"></i></div>
                            <div class="ms-3"><span>Profile</span></div>

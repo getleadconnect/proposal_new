@@ -1,22 +1,22 @@
 @extends('layouts.master')
-@section('title','Dashboard')
+@section('title','Scratch Bills')
 @section('contents')
 <style>
 .card-body{
 	padding-top:2px !important;
 }
-
+.td-count
+{
+	width:10%;
+}
+.td-desc
+{
+	width:30%;
+}						
 </style>
 
-<link href="{{ asset('assets/intl-tel-input17.0.3/intlTelInput.min.css')}}" rel="stylesheet"/>
-
-<!-- for message -------------->
-		<input type="hidden" id="view_message" value="{{ Session::get('message') }}">
-<!-- for message end-------------->	
-
-
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-              <div class="breadcrumb-title pe-3">Users</div>
+              <div class="breadcrumb-title pe-3">Register Shops</div>
  
              <!-- <div class="ms-auto">
                 <div class="btn-group">
@@ -32,150 +32,162 @@
               </div>  -->
             </div>
             <!--end breadcrumb-->
-
+			
+			
+			<div class="row">
+			<div class="col-12 col-lg-3 col-xl-3 col-xxl-3">
+			
               <div class="card">
                 <div class="card-header p-y-3">
 				<div class="row">
 				<div class="col-lg-9 col-xl-9 col-xxl-9 col-9">
-                  <h6 class="mb-0 pt5">Details</h6>
+				   <h6 class="mb-0 pt5 mt-2"><i class="fa fa-user-plus"></i> Add Shop Details</h6>
 				  </div>
 				  <div class="col-lg-3 col-xl-3 col-xxl-3 col-3 text-right">
-				     <!--<a href="#" class="btn btn-gl-primary btn-xs"  data-bs-toggle="offcanvas" data-bs-target="#add-user" ><i class="fa fa-plus"></i>&nbsp;Add User</a>-->
+				     <!--<a href="javascript:;" class="btn btn-gl-primary" ><i class="lni lni-upload"></i>&nbsp;Export</a>-->
 				  </div>
-
 				  </div>
                 </div>
                 <div class="card-body">
-					
+
                    <div class="row mt-3">
-				   <div class="col-12 col-lg-4 col-xl-4 col-xxl-4">
-				   	<label class="mb-3 bb-1"><b>Add User</b> </label>
-				   <form id="formAddUser">
-						@csrf
-						<div class="row mb-2" >
-							<div class="col-11 col-lg-11 col-xl-11 col-xxl-11">
-								<label for="user_name" class="form-label">Name<span class="required">*</span></label>
-								<input type="text" class="form-control"  name="user_name" id="user_name" placeholder="Name" required>
-							</div>
-						</div>
-						
-						<div class="row mb-2" >
-							<div class="col-11 col-lg-11 col-xl-11 col-xxl-11">
-								<label for="email" class="form-label">Email<span class="required">*</span></label>
-								<input type="text" class="form-control"  name="email" id="email" placeholder="Email" required>
-							</div>
-						</div>
+                     <div class="col-12 col-lg-12 d-flex">
+                      <div class="card  shadow-none w-100 mt-2">
 
-						<div class="row mb-2" >
-							<div class="col-11 col-lg-11 col-xl-11 col-xxl-11">
-								<label for="mobile" class="form-label">Mobile<span class="required">*</span></label>
-								<input type="hidden" class="form-control" name="country_code" id="country_code" value="91"  required>
-								<br>
-								<input type="tel" class="form-control" name="mobile" id="mobile" minlength=6 maxlength=15 required>
-							</div>
-						</div>
+							<form id="formAddStaffUser">
+								@csrf
+								
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="user_name" class="form-label mb-2">Shop Name<span class="required">*</span></label>
+										<input type="text" class="form-control"  name="user_name" id="user_name"  placeholder="Name" required>
+									</div>
+								</div>
 
-						<div class="row mb-2" >
-							<div class="col-11 col-lg-11 col-xl-11 col-xxl-11">
-								<label>Password<span class="required">*</span></label>
-								<input type="text" class="form-control"  name="password" id="password" value="123456" placeholder="Password" required>
-							</div>
-						</div>
-						
-						<div class="row mb-2">
-							<div class="col-lg-11 col-xl-11 col-xxl-11 text-end">
-							<button class="btn btn-primary" id="btn-submit" type="submit"> Submit </button>
-							</div>
-						</div>
-						</form>
-				   
-				    </div>
-                    
-					<div class="col-12 col-lg-8 col-xl-8 col-xxl-8">
-					 
-					 <label class="mb-3 bb-1"><b>Users List</b> </label>
-					 
-                      <div class="card  shadow-none w-100 mt-3">
-                        <!--<div class="card-body">-->
-                          <!--<div class="table-responsive">-->
-	
-                             <table id="datatable" class="table align-middle " style="width:100% !important;" >
-                               <thead class="table-semi-dark">
-                                 <tr>
-									<th>SlNo</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Mobile</th>
-									<th>Status</th>
-									<th class="no-content" style="width:50px;">Action</th>
-								</tr>
-                               </thead>
-                               <tbody class="table-min-height">
-                                  
-                               </tbody>
-                             </table>
-                          <!--</div>-->
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="mobile" class="form-label mb-2">Mobile<span class="required">*</span></label>
+										<input type="hidden" class="form-control" name="country_code" id="country_code"   required>
+										<br>
+										<input type="tel" class="form-control" name="mobile" id="mobile"  minlength=6 maxlength=15 required>
+									</div>
+								</div>
 
-                       <!-- </div>-->
-                      </div> 
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="email" class="form-label mb-2">Email</label>
+										<input type="text" class="form-control"  name="email" id="email"  placeholder="Email" required>
+									</div>
+								</div>
+								
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="email" class="form-label mb-2">Address</label>
+										<textarea type="text" class="form-control"  name="address" id="address"  placeholder="Address" required></textarea>
+									</div>
+								</div>
+								
+								
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="email" class="form-label mb-2">Place</label>
+										<input type="text" class="form-control"  name="location" id="location"  placeholder="location" required>
+									</div>
+								</div>
+								
+								
+								<div class="row mb-2" >
+									<div class="col-12 col-lg-11 col-xl-11 col-xxl-11">
+										<label for="password" class="form-label mb-2">Password<span class="required">*</span></label>
+										<input type="text" class="form-control"  name="password" id="password" placeholder="password" required>
+									</div>
+								</div>
+
+								<div class="row mb-2 mt-3">
+									<div class="col-lg-11 col-xl-11 col-xxl-11 text-end">
+									<button class="btn btn-primary" id="btn-submit" type="submit"> Submit </button>
+									</div>
+								</div>
+								</form>
                     </div>
                    </div><!--end row-->
                 </div>
               </div>
-			  
-			
-	<div class="offcanvas offcanvas-end shadow border-start-0 p-2" id="add-user" style="width:25% !important" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" aria-modal="true" role="dialog">
-          <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Add User</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-          </div>
-			<div class="offcanvas-body">
+		</div>
+		</div>
+		<div class="col-12 col-lg-9 col-xl-9 col-xxl-9">
+		
+			<div class="card">
+                <div class="card-header p-y-3">
+				<div class="row">
+				<div class="col-lg-9 col-xl-9 col-xxl-9 col-9">
+				   <h6 class="mb-0 pt5 mt-2"><i class="fa fa-users"></i> Users List</h6>
+				  </div>
+				  <div class="col-lg-3 col-xl-3 col-xxl-3 col-3 text-right">
+				     <!--<a href="javascript:;" class="btn btn-gl-primary" ><i class="lni lni-upload"></i>&nbsp;Export</a>-->
+				  </div>
+				  </div>
+                </div>
+                <div class="card-body">
 
-			
-			  
-            </div>
-    </div>
-		
-		
-		
+                   <div class="row mt-3">
+                     <div class="col-12 col-lg-12 d-flex">
+                      <div class="card  shadow-none w-100 mt-2">
+                        <!--<div class="card-body">-->
+                          <div class="table-responsive">
 	
-	<div class="offcanvas offcanvas-end shadow border-start-0 p-2" id="edit-user" style="width:25% !important" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" aria-modal="true" role="dialog">
+                             <table id="datatable" class="table align-middle" style="width:100% !important;" >
+                               <thead class="thead-semi-dark">
+                                 <tr>
+									<th>SlNo</th>
+									<th>Name</th>
+									<th>Country</th>
+									<th>Mobile</th>
+									<th>Email</th>
+									<th>Address</th>
+									<th>Status</th>
+									<th class="no-content" style="width:50px;">Action</th>
+								</tr>
+                               </thead>
+                               <tbody>
+                                  
+                               </tbody>
+                             </table>
+                          </div>
+						  
+						  </div>
+
+                    </div>
+                   </div><!--end row-->
+                </div>
+              </div>
+		
+		
+		</div>
+		</div>	  
+		
+		
+		
+		
+		
+		<div class="offcanvas offcanvas-end shadow border-start-0 p-2" id="edit-user" style="width:25% !important" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" aria-modal="true" role="dialog">
           <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Edit User</h5>
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Edit</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
           </div>
 			<div class="offcanvas-body">
   
+
+
+  
             </div>
-    </div>
-
-
-
-<div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-xxl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			
-			<div class="modal-body">
-			
-
-	
-				<div class="modal-footer">
-							<div class="col-lg-12 col-xl-12 col-xxl-12 text-end">
-							<button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
-							<button class="btn btn-primary" type="submit"> Submit </button>
-							</div>
-				</div>
-				
-			</div>
 		</div>
-	</div>
-</div>
-
+	  
+	 
+			  
+		
 @push('scripts')
+
 
 @if(Session::get('success'))
 	<script>
@@ -189,13 +201,9 @@
 	</script>
 @endif
 
-
-<script src="{{asset('assets/intl-tel-input17.0.3/intlTelInput.min.js')}}"></script>
-
 <script>
 
 BASE_URL ={!! json_encode(url('/')) !!}
-
 
 var phone_number = window.intlTelInput(document.querySelector("#mobile"), {
 	  separateDialCode: true,
@@ -203,22 +211,6 @@ var phone_number = window.intlTelInput(document.querySelector("#mobile"), {
 	  hiddenInput: "full_number",
 	  utilsScript:"{{url('assets/intl-tel-input17.0.3/utils.js')}}"
 	});
-
-
-/*
-var mes=$('#view_message').val().split('#');
-
-if(mes[0]=="success")
-{	
-	toastr.success(mes[1]);
-}
-else if(mes[0]=="danger")
-{
-	toastr.error(mes[1]);
-}
-*/
-
-//---------------------------------------------------------------------------
 
 
 var table = $('#datatable').DataTable({
@@ -234,7 +226,7 @@ var table = $('#datatable').DataTable({
 			
 		ajax:
 		{
-			url:BASE_URL+"/admin/view-users",
+			url:BASE_URL+"/users/view-staff-users",
 			data: function (data) 
 		    {
                //data.search = $('input[type="search"]').val();
@@ -244,16 +236,19 @@ var table = $('#datatable').DataTable({
         columns: [
             {"data": 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false  },
 			{"data": "name" },
+			{"data": "countrycode" },
+			{"data": "mobile" },
 			{"data": "email" },
-			{"data": "user_mobile" },
+			{"data": "address" },
 			{"data": "status" },
 			{"data": "action" ,name: 'Action',orderable: false, searchable: false },
         ],
 
 });
 
+
 				
-var addValidator=$('#formAddUser').validate({ 
+var addValidator=$('#formAddStaffUser').validate({ 
 	
 	rules: {
 		user_name: {required: true,},
@@ -264,22 +259,20 @@ var addValidator=$('#formAddUser').validate({
 
 	submitHandler: function(form) 
 	{
-		//$("#btn-submit").attr('disabled',true).html('Saving <i class="fa fa-spinner fa-spin"></i>')
-		
 		var code=phone_number.getSelectedCountryData()['dialCode'];
 		$("#country_code").val(code);
 		
 		$.ajax({
-		url: "{{ url('admin/save-user') }}",
+		url: "{{ url('users/save-staff-user') }}",
 		method: 'post',
-		data: $('#formAddUser').serialize(),
+		data: $('#formAddStaffUser').serialize(),
 		success: function(result){
 			if(result.status == 1)
 			{
 				$("#btn-submit").attr('disabled',false).html('Submit')
 				$('#datatable').DataTable().ajax.reload(null,false);
 				toastr.success(result.msg);
-				$('#formAddUser')[0].reset();
+				$('#formAddStaffUser')[0].reset();
 			}
 			else
 			{
@@ -296,7 +289,7 @@ $('#datatable tbody').on('click','.delete-user',function()
 {
 	Swal.fire({
 	  //title: "Are you sure?",
-	  text: "Are you sure, You want to delete this user and it's all data?",
+	  text: "Are you sure, You want to delete this user?",
 	  icon: "question",
 	  showCancelButton: true,
 	  confirmButtonColor: "#3085d6",
@@ -308,7 +301,7 @@ $('#datatable tbody').on('click','.delete-user',function()
 		var tid=$(this).attr('id');
 		
 		  $.ajax({
-          url: "{{url('admin/delete-user')}}"+'/'+tid,
+          url: "{{url('users/delete-staff-user')}}"+'/'+tid,
           type: 'get',
 		  dataType: 'json',
           //data:{'track_id':tid},
@@ -330,7 +323,6 @@ $('#datatable tbody').on('click','.delete-user',function()
 	});
 
 });
- 
 
 $('#datatable tbody').on('click','.edit-user',function()
 {
@@ -340,7 +332,7 @@ $('#datatable tbody').on('click','.edit-user',function()
 
 			jQuery.ajax({
 			type: "GET",
-			url: "{{url('admin/edit-user')}}"+"/"+id,
+			url: "{{url('users/edit-staff-user')}}"+"/"+id,
 			dataType: 'html',
 			//data: {vid: vid},
 			success: function(res)
@@ -349,6 +341,7 @@ $('#datatable tbody').on('click','.edit-user',function()
 			}
 		});
 });
+
 
 
 $("#datatable tbody").on('click','.btn-act-deact',function()
@@ -361,8 +354,8 @@ $("#datatable tbody").on('click','.btn-act-deact',function()
 	
 	Swal.fire({
 	  title: optText+"?",
-	  text: "You want to "+opt_text+" this user?",
-	  icon: "warning",
+	  text: "You want to "+opt_text+" this bill?",
+	  icon: "question",
 	  showCancelButton: true,
 	  confirmButtonColor: "#3085d6",
 	  cancelButtonColor: "#d33",
@@ -373,7 +366,7 @@ $("#datatable tbody").on('click','.btn-act-deact',function()
 		
 		  jQuery.ajax({
 			type: "get",
-			url: BASE_URL+"/admin/act-deact-user/"+opt+"/"+id,
+			url: BASE_URL+"/users/act-deact-staff-user/"+opt+"/"+id,
 			dataType: 'json',
 			//data: {vid: vid},
 			success: function(res)
@@ -393,9 +386,6 @@ $("#datatable tbody").on('click','.btn-act-deact',function()
 	});
 
 });
-
-
-
 
 
 </script>

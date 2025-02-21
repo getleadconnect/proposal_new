@@ -134,4 +134,32 @@ class User extends Authenticatable
     ];
 
 	
+	public static function totalCount()
+	{
+		return self::count();
+	}
+	
+	public static function userThisMonth()
+	{
+		return self::whereMonth('created_at',date('m'))->count();
+	}
+	
+	public static function userThisWeek()
+	{
+		$now = Carbon::now();
+		$weekStartDate = $now->startOfWeek();
+		$weekEndDate = $now->endOfWeek();
+		return self::whereBetween('created_at',[$weekStartDate,$weekEndDate])->count();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

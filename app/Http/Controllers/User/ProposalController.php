@@ -99,7 +99,7 @@ class ProposalController extends Controller
 		$prop=Proposal::where('id',$id)->first();
 		$pitems=ProposalItem::where('vendor_id',$vendor_id)->where('proposal_id',$id)->get();
 		
-		return view('users.proposal.proposal_template',compact('user_dt','prop','pitems'));
+		return view('users.proposal.proposal_template_view',compact('user_dt','prop','pitems'));
 		
 	}
   
@@ -125,8 +125,7 @@ class ProposalController extends Controller
 				Session::flash('fail','Details not found.');
 				return back();
 			}
-			
-			
+	
 		}
 		catch(\Exception $e)
 		{

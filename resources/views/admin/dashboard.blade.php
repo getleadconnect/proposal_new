@@ -2,19 +2,19 @@
 @section('title','Dashboard')
 @section('contents')
 			  
-            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-6">
               <div class="col">
                 <div class="card overflow-hidden radius-10">
                     <div class="card-body">
                      <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
                       <div class="w-50">
-                        <p>Total Orders</p>
-                        <h4 class="">8,542</h4>
+                        <p>Total Users</p>
+                        <h4 class="">{{$data['user_count']}}</h4>
                       </div>
-                      <div class="w-50">
+                      <!--<div class="w-50">
                          <p class="mb-3 float-end text-success">+ 16% <i class="bi bi-arrow-up"></i></p>
                          <div id="chart1"></div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -23,14 +23,15 @@
                 <div class="card overflow-hidden radius-10">
                     <div class="card-body">
                      <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
-                      <div class="w-50">
-                        <p>Total Views</p>
-                        <h4 class="">12.5M</h4>
+                      <div class="w-100">
+                        <p>This Week(<small>Users</small>)</p>
+                        <h4 class="">{{$data['week_count']}}</h4>
                       </div>
-                      <div class="w-50">
+                      <!--<div class="w-50">
                          <p class="mb-3 float-end text-danger">- 3.4% <i class="bi bi-arrow-down"></i></p>
                          <div id="chart2"></div>
-                      </div>
+                      </div>-->
+					  
                     </div>
                   </div>
                 </div>
@@ -39,14 +40,14 @@
                 <div class="card overflow-hidden radius-10">
                     <div class="card-body">
                      <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
-                      <div class="w-50">
-                        <p>Revenue</p>
-                        <h4 class="">$64.5K</h4>
+                      <div class="w-100">
+                        <p>This Month(<small>Users</small>)</p>
+                        <h4 class="">{{$data['month_count']}}</h4>
                       </div>
-                      <div class="w-50">
+                      <!--<div class="w-50">
                          <p class="mb-3 float-end text-success">+ 24% <i class="bi bi-arrow-up"></i></p>
                          <div id="chart3"></div>
-                      </div>
+                      </div>-->
                     </div>
                   </div>
                 </div>
@@ -56,13 +57,47 @@
                     <div class="card-body">
                      <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
                       <div class="w-50">
-                        <p>Customers</p>
-                        <h4 class="">25.8K</h4>
+                        <p>Options</p>
+                        <h4 class="">0.0</h4>
                       </div>
-                      <div class="w-50">
+                      <!--<div class="w-50">
                          <p class="mb-3 float-end text-success">+ 8.2% <i class="bi bi-arrow-up"></i></p>
                          <div id="chart4"></div>
+                      </div>-->
+                    </div>
+                  </div>
+                </div>
+               </div>
+			   
+			   <div class="col">
+                <div class="card overflow-hidden radius-10">
+                    <div class="card-body">
+                     <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
+                      <div class="w-50">
+                        <p>Options</p>
+                        <h4 class="">0.0</h4>
                       </div>
+                      <!--<div class="w-50">
+                         <p class="mb-3 float-end text-success">+ 8.2% <i class="bi bi-arrow-up"></i></p>
+                         <div id="chart4"></div>
+                      </div>-->
+                    </div>
+                  </div>
+                </div>
+               </div>
+			   
+			   <div class="col">
+                <div class="card overflow-hidden radius-10">
+                    <div class="card-body">
+                     <div class="d-flex align-items-stretch justify-content-between overflow-hidden">
+                      <div class="w-50">
+                        <p>Options</p>
+                        <h4 class="">0.0</h4>
+                      </div>
+                      <!--<div class="w-50">
+                         <p class="mb-3 float-end text-success">+ 8.2% <i class="bi bi-arrow-up"></i></p>
+                         <div id="chart4"></div>
+                      </div>-->
                     </div>
                   </div>
                 </div>
@@ -104,32 +139,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="row row-cols-1 row-cols-md-2 g-3 mt-2 align-items-center">
-                      <div class="col-lg-7 col-xl-7 col-xxl-8">
-                        <div class="by-device-container">
-                           <div class="piechart-legend">
-                              <h2 class="mb-1">85%</h2>
-                              <h6 class="mb-0">Total Visitors</h6>
-                           </div>
-                          <canvas id="chart6"></canvas>
-                        </div>
-                      </div>
-                      <div class="col-lg-5 col-xl-5 col-xxl-4">
-                        <div class="">
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex align-items-center justify-content-between border-0">
-                              <i class="bi bi-tablet-landscape-fill me-2 text-primary"></i> <span>Tablet - </span> <span>22.5%</span>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center justify-content-between border-0">
-                              <i class="bi bi-phone-fill me-2 text-primary-2"></i> <span>Mobile - </span> <span>62.3%</span>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center justify-content-between border-0">
-                              <i class="bi bi-display-fill me-2 text-primary-3"></i> <span>Desktop - </span> <span>15.2%</span>
-                            </li>
-                          </ul>
-                         </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>

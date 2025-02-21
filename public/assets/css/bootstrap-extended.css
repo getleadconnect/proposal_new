@@ -1,6 +1,8 @@
 
 /* Components */
 
+.dataTables_scrollBody{min-height:200px;}
+
 .card {
     border: 0;
     margin-bottom: 1.5rem;

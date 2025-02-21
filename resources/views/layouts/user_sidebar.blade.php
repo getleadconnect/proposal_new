@@ -1,5 +1,4 @@
-
-<aside class="sidebar-wrapper" data-simplebar="true">
+	<aside class="sidebar-wrapper" data-simplebar="true">
           <div class="sidebar-header">
             <div>
               <img src="{{url('assets/images/logos/gl-logo.svg')}}" class="logo-icon" alt="logo icon">
@@ -20,6 +19,14 @@
                 <div class="menu-title">Dashboard</div>
               </a>
             </li>
+			
+			 <li>
+              <a href="{{url('users/proposal/banners')}}">
+                <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
+                </div>
+                <div class="menu-title">Proposal Sections</div>
+              </a>
+            </li>
 		  
 		    <li>
               <a href="{{url('users/proposals')}}">
@@ -37,6 +44,12 @@
               </a>
               <ul>
                 <li> <a href="{{url('users/profile')}}"><i class="bi bi-circle"></i>My Profile</a>
+                </li>
+				
+				 <li> <a href="{{url('users/list-users')}}"><i class="bi bi-circle"></i>Users</a>
+                </li>
+				
+				<li> <a href="{{url('users/designations')}}"><i class="bi bi-circle"></i>Designations</a>
                 </li>
                 
               </ul>

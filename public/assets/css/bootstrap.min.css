@@ -3251,7 +3251,8 @@ textarea.form-control-lg {
 	white-space: nowrap;
 	background-color: transparent;
 	border: 0;
-	border-radius: var(--bs-dropdown-item-border-radius, 0)
+	border-radius: var(--bs-dropdown-item-border-radius, 0);
+	font-size:13px;
 }
 .dropdown-item:focus, .dropdown-item:hover {
 	color: var(--bs-dropdown-link-hover-color);

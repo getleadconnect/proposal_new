@@ -5,7 +5,7 @@
               <img src="{{url('assets/images/logos/gl-logo.svg')}}" class="logo-icon" alt="logo icon">
             </div>
             <div>
-              <h4 class="logo-text">Onedash</h4>
+              <h4 class="logo-text">GETLEAD</h4>
             </div>
             <div class="toggle-icon ms-auto"><i class="bi bi-list"></i>
             </div>
@@ -34,16 +34,12 @@
               <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-house-fill"></i>
                 </div>
-                <div class="menu-title">Dashboard</div>
+                <div class="menu-title">Option</div>
               </a>
               <ul>
-                <li> <a href="index.html"><i class="bi bi-circle"></i>Blue Dashboard 1</a>
+                <li> <a href="javascript:;"><i class="bi bi-circle"></i>Option 1</a>
                 </li>
-                <li> <a href="index2.html"><i class="bi bi-circle"></i>Blue Dashboard 2</a>
-                </li>
-                <li> <a href="index3.html"><i class="bi bi-circle"></i>Color Dashboard 1</a>
-                </li>
-                <li> <a href="index4.html"><i class="bi bi-circle"></i>Color Dashboard 2</a>
+                <li> <a href="javascript:;"><i class="bi bi-circle"></i>Oprion 2</a>
                 </li>
               </ul>
             </li>
@@ -327,7 +323,7 @@
               </a>
             </li> -->
             <li>
-              <a href="https://themeforest.net/user/codervent" target="_blank">
+              <a href="javascript:;" target="_blank">
                 <div class="parent-icon"><i class="bi bi-telephone-fill"></i>
                 </div>
                 <div class="menu-title">Support</div>
