@@ -90,8 +90,7 @@ class ProposalHeadingsController extends Controller
   {
 	 return view('users.proposal_sections.proposal_conditions');
   }	
-  
-  
+   
  
  
 // OTHER HEADING SECTIONS===========================================================================
@@ -113,7 +112,6 @@ public function store(Request $request)
 		{
             try
 			{
-				
 				$data=[
 					'vendor_id'=>$vendor_id,
 					'heading'=>$request->heading,
@@ -153,12 +151,14 @@ public function store(Request $request)
 		
         ->addColumn('action', function ($row)
         {
+			if($row->id>7)
+			$del='<li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>';
 		
 			$action='<div class="fs-5 ms-auto dropdown">
                           <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i class="fadeIn animated bx bx-dots-vertical"></i></div>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item edit-head" href="javascript:void(0)" id="'.$row->id.'" data-heading="'.$row->heading.'" data-bs-toggle="modal" data-bs-target="#edit-heading-modal"  ><i class="lni lni-pencil-alt"></i> Edit</a></li>
-                              <li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>
+							  '.$del.'
 							  </ul>
                         </div>';
 			return $action;
@@ -291,12 +291,15 @@ public function destroy($id)
 		
         ->addColumn('action', function ($row)
         {
+			if($row->id>5)
+			$del='<li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>';
+		
 		
 			$action='<div class="fs-5 ms-auto dropdown">
                           <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i class="fadeIn animated bx bx-dots-vertical"></i></div>
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item edit-head" href="javascript:void(0)" id="'.$row->id.'" data-valueheading="'.$row->value_heading.'" data-bs-toggle="modal" data-bs-target="#edit-value-heading-modal"  ><i class="lni lni-pencil-alt"></i> Edit</a></li>
-                              <li><a class="dropdown-item delete-head" href="javascript:void(0)" id="'.$row->id.'"><i class="lni lni-trash"></i> Delete</a></li>
+                              '.$del.'
 							  </ul>
                         </div>';
 			return $action;
