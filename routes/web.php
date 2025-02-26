@@ -14,6 +14,8 @@ use App\Http\Controllers\User\StaffUsersController;
 use App\Http\Controllers\User\DesignationController;
 use App\Http\Controllers\User\ProposalHeadingsController;
 
+use App\Http\Controllers\User\NewProposalController;
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -176,6 +178,20 @@ Route::controller(ProposalHeadingsController::class)->group(function() {
 	Route::post('/save-condition', 'saveCondition')->name('save-condition');
 	Route::post('/update-condition', 'updateCondition')->name('update-condition');
 	Route::get('/delete-condition/{id}', 'deleteCondition')->name('delete-condition');
+
+});
+
+
+
+
+Route::controller(NewProposalController::class)->group(function() {
+
+	Route::get('/proposal/create', 'index')->name('new-proposal');
+	Route::get('/view-proposal-values', 'viewProposalTempValues')->name('view-proposal-values');
+	Route::post('/save-proposal-value', 'store')->name('save-proposal-value');
+	Route::get('/delete-proposal-value/{id}', 'destroy')->name('delete-proposal-value');
+	Route::post('/save-new-proposal', 'saveNewProposal')->name('save-new-proposal');
+	Route::get('/get-customer/{id}', 'getCustomer')->name('get-customer');
 
 });
 

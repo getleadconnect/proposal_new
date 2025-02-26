@@ -11,7 +11,7 @@
               <div class="breadcrumb-title pe-3">Proposals</div>
  
              <div class="ms-auto">
-				  <a href="{{url('users/new-proposal')}}" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i> New Proposal</a>
+				  <a href="{{url('users/proposal/create')}}" type="button" class="btn btn-primary" ><i class="fa fa-plus"></i> New Proposal</a>
               </div>
             </div>
             <!--end breadcrumb-->
@@ -66,13 +66,13 @@
                                <thead class="table-semi-dark">
                                  <tr>
 									<th>#</th>
-									<th>Reference.No</th>
-									<th>Company</th>
-									<th>Address</th>
-									<!--<th>Items</th>-->
-									<th>Amount</th>
+									<th>Ref.No</th>
+									<th>Proposal Name</th>
+									<th>Customer</th>
+									<th>Activity</th>
+									<th>Juridiction</th>
+									<th>Visa/Share</th>
 									<th>Created On</th>
-									<th>Valid To</th>
 									<th class="no-content" style="width:50px;">Actions</th>
 								</tr>
 
@@ -173,12 +173,12 @@ var table = $('#datatable').DataTable({
         columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex',orderable: false, searchable: false},
                 {data: 'ref_no', name: 'ref_no'},
-                {data: 'company', name: 'company',className:'t-left'},
-                {data: 'address', name: 'address'},
-                //{data: 'license', name: 'license'},
-                {data: 'amount', name: 'amount'},
-                {data: 'created_on', name: 'created_on'},
-				{data: 'valid_to', name: 'valid_to'},
+                {data: 'proposal_name', name: 'proposal_company',className:'t-left'},
+                {data: 'cname', name: 'cname'},
+                {data: 'activity', name: 'activity'},
+				{data: 'juridiction', name: 'juridiction'},
+				{data: 'visa', name: 'visa'},
+				{data: 'created_on', name: 'created_on'},
                 {data: 'action', name: 'action'},
                 ]
 

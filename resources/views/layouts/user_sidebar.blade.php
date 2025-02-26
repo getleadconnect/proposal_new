@@ -37,6 +37,14 @@
             </li>
 			
 			<li>
+              <a href="{{url('users/proposal/create')}}">
+                <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
+                </div>
+                <div class="menu-title">New Proposal</div>
+              </a>
+            </li>
+			
+			<li>
               <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                 </div>

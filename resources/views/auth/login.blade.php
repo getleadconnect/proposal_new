@@ -120,7 +120,7 @@ $(document).ready(function()
 
 var phone_number = window.intlTelInput(document.querySelector("#mobile"), {
 	  separateDialCode: true,
-	  preferredCountries:["IN","AE"],
+	  preferredCountries:["AE", "IN"],
 	  hiddenInput: "full_number",
 	  utilsScript:"{{url('assets/intl-tel-input17.0.3/utils.js')}}"
  });

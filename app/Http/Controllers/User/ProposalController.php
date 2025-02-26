@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\Proposal;
-use App\Models\ProposalItem;
-use App\Models\ProposalItemTemp;
+use App\Models\ProposalValue;
 
 use Validator;
 
@@ -39,36 +38,34 @@ class ProposalController extends Controller
   {
 	 return view('users.proposal.new_proposal');
   }	
-  
-  
+    
   public function getProposals(Request $request)
     {
 		
 		if ($request->ajax())
 		{
-			$data = Proposal::latest()->get()->map(function($q)
-			{
-				$amt=ProposalItem::where('proposal_id',$q->id)->sum('total_price');
-				$q['net_amount']=$amt;
-				return $q;
-			});
+			$data = Proposal::latest()->get();
 
 			return Datatables::of($data)
 					->addIndexColumn()
 					
 					->addColumn('created_on', function($row){
-						
 						$dat=date_create($row->created_at)->format('d-M-Y h:i:s A');
 						return $dat;
 					})
-					->addColumn('valid_to', function($row){
-						
-						$dat=date_create($row->valid_to)->format('d-M-Y');
-						return $dat;
+					
+					->addColumn('cname', function($row){
+						$mobile=$row->customer_name."<br><i class='fa fa-mobile'></i>: ".$row->country_code.$row->phone_number."<br><i class='fa fa-envelope'></i>: ".$row->email;
+						return $mobile;
 					})
-					->addColumn('amount', function($row){
-						$amt=$row->net_amount;
-						return $amt;
+					
+					->addColumn('mobile', function($row){
+						$mobile=$row->country_code.$row->phone_number;
+						return $mobile;
+					})
+					->addColumn('visa', function($row){
+						$visa=$row->no_of_visa."/".$row->shareholders;
+						return $visa;
 					})
 					
 					->addColumn('action', function($row){
@@ -85,12 +82,13 @@ class ProposalController extends Controller
 								</div>';
 						return $btn;
 						})
-					->rawColumns(['action'])
+					->rawColumns(['cname','action'])
 					->make(true);
 		}
 
 	}
   
+ 
   
 	public function viewProposalInTemplate($id)
 	{
@@ -146,8 +144,7 @@ public function destroy($id)
 		if($prop)
 		{
 			$res=$prop->delete();
-			$res1=ProposalItem::where('proposal_id',$id)->delete();
-			
+			$res1=ProposalValue::where('proposal_id',$id)->delete();
 			if($res)
 			{   
 				return response()->json(['msg'=>'Proposal successfully removed.','status'=>true]);
@@ -165,136 +162,6 @@ public function destroy($id)
 }
 
 
-  public function saveProposalTempItem(Request $request)
-  {
-
-		try
-		{
-			$user_id=User::getVendorId();
-
-			$data=[
-				'vendor_id'=>$user_id,
-				'description'=>$request->description,
-				'qty'=>$request->qty,
-				'price'=>$request->price,
-				'total_price'=>$request->total_price,
-			];
-							
-			$result=ProposalItemTemp::create($data);
-
-			if($result)
-			{   
-				return response()->json(['msg'=>'','status'=>true]);
-			}
-			else
-			{
-				return response()->json(['msg'=>'Details missing!','status'=>false]);
-			}
-
-		}
-		catch(\Exception $e)
-		{
-			return response()->json(['msg'=>$e->getMessage(),'status'=>false]);
-		}
-  }
-
-
-public function getProposalTempItems()
-    {
-      $id=User::getVendorId();
-
-      $offers = ProposalItemTemp::where('vendor_id',$id)->get();
-	
-        return Datatables::of($offers)
-		->addIndexColumn()
-        ->addColumn('action', function ($row)
-        {
-			return '<a href="#" id="'.$row->id.'" class="btn btn-sm btn-outline-light delete-pro-item" aria-expanded="false"><i class="fa fa-trash" style="font-size:14px;color:#eb4e4e;"></i></a>';
-            
-        })
-        ->rawColumns(['action'])
-        ->make(true);
-    }
-
- 
- public function deleteProposalTempItem($id)
-    {
-        $vendor_id=User::getVendorId();
-		$result= ProposalItemTemp::where('vendor_id',$vendor_id)->where('id',$id)->delete();
-		return response()->json(['msg'=>'item removed','status'=>true]);
-    }
- 
- public function saveProposal(Request $request)
-  {
-
-		try
-		{
-			
-			DB::beginTransaction();
-			
-			$user_id=User::getVendorId();
-
-			$code = substr(uniqid(bin2hex(random_bytes(4)), true), -6);  // Limiting the length to maxLength
-			
-			$uni_code="EZBZ".$code;
-
-			$data=[
-				'ref_no'=>$uni_code,
-				'vendor_id'=>$user_id,
-				'company'=>$request->company_name,
-				'address'=>$request->address,
-				'location'=>$request->location,
-				'country'=>$request->country,
-				'pincode'=>$request->pin_code,
-			];
-			$result=Proposal::create($data);
-			
-			$pro_id=$result->id;
-			
-			$pro=ProposalItemTemp::where('vendor_id',$user_id)->get();
-			if($pro)
-			{
-				foreach($pro as $row)
-				{
-					$dat=[
-						'vendor_id'=>$user_id,
-						'proposal_id'=>$pro_id,
-						'description'=>$row->description,
-						'qty'=>$row->qty,
-						'price'=>$row->price,
-						'total_price'=>$row->total_price,
-					];
-							
-					$res=ProposalItem::create($dat);
-				}
-			}
-			
-			
-			if($result)
-			{   
-				DB::commit();
-				
-				ProposalItemTemp::where('vendor_id',$user_id)->delete();
-				
-				Session::flash('success','Proposal successfully added.');
-				return redirect('users/proposals');
-			}
-			else
-			{
-				DB::rollback();
-				Session::flash('fail','Something wrong, Try again.');
-				return back();
-			}
-
-		}
-		catch(\Exception $e)
-		{
-			DB::rollback();
-			Session::flash('fail',$e->getMessage());
-			return back();
-		}
-  }
- 
 
  
   /*public function store(Request $request)
