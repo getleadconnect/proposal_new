@@ -245,6 +245,7 @@ public function destroy($id)
 				
 				if($result)
 				{
+					$pres=ProposalTempValue::where('vendor_id',$vendor_id)->where('created_by',Auth::user()->id)->delete();
 					Session::flash("success",'Proposal successfully added.');
         		}
         		else

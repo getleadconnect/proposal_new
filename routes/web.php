@@ -46,7 +46,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.','middleware' => 'authware'], func
 		Route::get('/act-deact-user/{op}/{id}', 'activateDeactivate')->name('act-deact-user');
 	});
 
-
 });
 
 
@@ -67,11 +66,11 @@ Route::controller(ProposalController::class)->group(function() {
 	
 	Route::get('/delete-proposal/{id}', 'destroy')->name('delete-proposal');
 	
-	Route::get('/new-proposal', 'newProposal')->name('new-proposal');
+	/*Route::get('/new-proposal', 'newProposal')->name('new-proposal');
 	Route::post('/save-proposal-temp-item', 'saveProposalTempItem')->name('save-proposal-temp-item');
 	Route::get('/get-proposal-temp-items', 'getProposalTempItems')->name('get-proposal-temp-items');
 	Route::get('/delete-proposal-temp-item/{id}', 'deleteProposalTempItem')->name('delete-proposal-temp-item');
-	Route::post('/save-proposal', 'saveProposal')->name('saveProposal');
+	Route::post('/save-proposal', 'saveProposal')->name('saveProposal');*/
 
 });
 
@@ -180,8 +179,6 @@ Route::controller(ProposalHeadingsController::class)->group(function() {
 	Route::get('/delete-condition/{id}', 'deleteCondition')->name('delete-condition');
 
 });
-
-
 
 
 Route::controller(NewProposalController::class)->group(function() {
