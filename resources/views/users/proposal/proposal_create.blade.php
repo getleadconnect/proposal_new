@@ -50,7 +50,7 @@ table th,td
                 <div class="card-header p-y-3">
 				<div class="row">
 				<div class="col-lg-9 col-xl-9 col-xxl-9 col-9">
-				   <h6 class="mb-0 pt5 mt-2"><i class="fa fa-user-plus"></i>Proposal Banner</h6>
+				   <h6 class="mb-0 pt5 mt-2"><i class="fa fa-file"></i>&nbsp;&nbsp;Add Proposal Details</h6>
 				  </div>
 				  <div class="col-lg-3 col-xl-3 col-xxl-3 col-3 text-right">
 				     <!-- <a href="javascript:;" class="btn btn-primary btn-sm add-user" data-bs-toggle="offcanvas" data-bs-target="#add_user"><i class="lni lni-plus"></i>&nbsp;Add User</a> -->
@@ -220,7 +220,7 @@ table th,td
 											</div>
 											
 											<div class="row mt-3 mb-3 hide" id="cust-existing" style="background:#f7f7f7;">
-											<div class="col-11 col-lg-11 col-xl-11 col-xxl-11 pb-2 pt-2">
+											<div class="col-8 col-lg-8 col-xl-8 col-xxl-8 pb-2 pt-2">
 
 												<label for="Designation" class="form-label mb-2">Select Customer<span class="required">*</span></label>
 												<select class="form-control" name="ex_customer" id="ex_customer">
@@ -374,6 +374,7 @@ BASE_URL ={!! json_encode(url('/')) !!}
 
 $(".cust_option").change(function()
 {
+	clearData();
 	if($(this).val()==2)
 	{
 		$("#cust-existing").removeClass('hide');
@@ -385,6 +386,19 @@ $(".cust_option").change(function()
 		$("#cust-existing").addClass('hide');
 	}
 });
+
+function clearData()
+{
+	$("#customer_name").val('');
+	$("#phone_number").val('');
+	$("#email").val('');
+	$("#activity").val('');
+	$("#activity_code").val('');
+	$("#juridiction").val('');
+	$("#no_of_visa").val('');
+	$("#shareholders").val('');
+}
+
 
 $("#ex_customer").change(function()
 {

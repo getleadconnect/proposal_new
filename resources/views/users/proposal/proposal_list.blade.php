@@ -31,30 +31,40 @@
                 </div> -->
 				
                 <div class="card-body">
-					<div class="accordion-item accordion-item-bm" >
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" >
-                          <div class="accordion-body">
+				
+					</label><b>Filter By:</b></label>
+					<div class="row" >
+                        <div class="col-12 col-lg-12 col-xl-12 col-xxl-12">
 						   <div class="row" style="padding:3px 10px 0px 10px;" >
-							<div class="col-3 col-lg-3">
-								<label>Center</label>
-								<select class="form-control mb-3" id="flt_center" placeholder="center" required>
-								<option value="">select</option>
-
-								</select>
+						   
+						   <div class="col-2 col-lg-2">
+								<label>Ref No</label>
+								<input type="text" class="form-control" id="flt_ref_no" placeholder="center" required>
 							</div>
 							
 							<div class="col-3 col-lg-3">
-								<label>District</label>
+								<label>Date</label>
+								<input type="text" class="form-control" id="flt_date" placeholder="center" required>
+							</div>
+							
+							<div class="col-3 col-lg-3">
+								<label>Customer</label>
 								<select class="form-control mb-3" id="flt_district" placeholder="district" required>
 								<option value="">select</option>
 
 								</select>
 							</div>
+							
+							<div class="col-1 col-lg-1 col-xl-1 col-xxl-1">
+								<label style="width:100%;">&nbsp;&nbsp;</label>
+								<button type="button" class="btn btn-primary">Filter </button>
+							</div>
+							
 						   </div>
-						</div>
 					  </div>
 					  
 					</div>
+				<hr style="margin-top:0px;">
 				
                    <div class="row mt-2">
                      <div class="col-12 col-lg-12 d-flex">

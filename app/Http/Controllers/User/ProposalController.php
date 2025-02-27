@@ -10,6 +10,15 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\Proposal;
 use App\Models\ProposalValue;
+use App\Models\ProposalBanner;
+use App\Models\ProposalSpecialService;
+use App\Models\ProposalOtherService;
+use App\Models\ProposalTimeline;
+use App\Models\ProposalNote;
+use App\Models\ProposalCondition;
+use App\Models\ProposalBankDetail;
+use App\Models\ProposalDocument;
+use App\Models\ProposalValueHeading;
 
 use Validator;
 
@@ -88,11 +97,24 @@ class ProposalController extends Controller
 	public function viewProposalInTemplate($id)
 	{
 		$vendor_id=User::getVendorId();
+		$user_name=Auth::user()->user_name;
+				
 		$user_dt=UserDetail::where('vendor_id',$vendor_id)->first();
 		$prop=Proposal::where('id',$id)->first();
-		$pitems=ProposalItem::where('vendor_id',$vendor_id)->where('proposal_id',$id)->get();
 		
-		return view('users.proposal.proposal_template_view',compact('user_dt','prop','pitems'));
+		$banner=ProposalBanner::orderBy('id','DESC')->first();
+		
+		$data['value_headings']=ProposalValueHeading::orderBy('id','ASC')->get();
+		$data['values']=ProposalValue::where('proposal_id',$id)->get();
+		$data['special_service']=ProposalSpecialService::orderBy('id','ASC')->get();
+		$data['other_service']=ProposalOtherService::orderBy('id','ASC')->get();
+		$data['documents']=ProposalDocument::orderBy('id','ASC')->get();
+		$data['bank_details']=ProposalBankDetail::orderBy('id','ASC')->get();
+		$data['timeline']=ProposalTimeline::orderBy('id','ASC')->get();
+		$data['notes']=ProposalNote::orderBy('id','ASC')->get();
+		$data['conditions']=ProposalCondition::orderBy('id','ASC')->get();
+		
+		return view('users.proposal.proposal_template_view',compact('banner','user_dt','prop','data','user_name'));
 		
 	}
   
@@ -103,13 +125,26 @@ class ProposalController extends Controller
 		try
 		{
 			$vendor_id=User::getVendorId();
+			$user_name=Auth::user()->user_name;
+				
 			$user_dt=UserDetail::where('vendor_id',$vendor_id)->first();
 			$prop=Proposal::where('id',$id)->first();
-			$pitems=ProposalItem::where('vendor_id',$vendor_id)->where('proposal_id',$id)->get();
-				
+			
+			$banner=ProposalBanner::orderBy('id','DESC')->first();
+			
+			$data['value_headings']=ProposalValueHeading::orderBy('id','ASC')->get();
+			$data['values']=ProposalValue::where('proposal_id',$id)->get();
+			$data['special_service']=ProposalSpecialService::orderBy('id','ASC')->get();
+			$data['other_service']=ProposalOtherService::orderBy('id','ASC')->get();
+			$data['documents']=ProposalDocument::orderBy('id','ASC')->get();
+			$data['bank_details']=ProposalBankDetail::orderBy('id','ASC')->get();
+			$data['timeline']=ProposalTimeline::orderBy('id','ASC')->get();
+			$data['notes']=ProposalNote::orderBy('id','ASC')->get();
+			$data['conditions']=ProposalCondition::orderBy('id','ASC')->get();
+
 			if(!empty($user_dt))
 			{
-				$pdf = PDF::loadView('users.proposal.proposal_template',compact('user_dt','prop','pitems'));
+				$pdf = PDF::loadView('users.proposal.proposal_template',compact('banner','user_dt','prop','data','user_name'));
 				$filename="proposal_".date('Ymdhis').".pdf";
 				return $pdf->download($filename);
 			}

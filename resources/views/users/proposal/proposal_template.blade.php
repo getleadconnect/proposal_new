@@ -15,7 +15,8 @@
         }
 
         .page {
-            /*width: 18cm;*/
+            /*width: 21cm;*/
+			width: 93%;
             min-height: 26cm;
             margin: 0 auto;
             padding: 1cm;
@@ -24,17 +25,6 @@
             box-sizing: border-box;
             position: relative;
 			
-        }
-
-        .company-title {
-            color: #313131;
-            font-family: Roboto;
-            padding-top: 20px !important;
-            font-size: 22px !important;
-            font-style: normal;
-            font-weight: bold;
-            line-height: normal;
-            display: block;
         }
 
         .logo {
@@ -46,7 +36,6 @@
         .page-header {
             text-align: center;
             margin-top: 50px;
-            margin-left: 50px;
         }
 
         .page-header img {
@@ -54,47 +43,20 @@
             float: left;
         }
 
-        .page-header .contact-info {
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        .contact-info p {
-            padding: 3px 0px;
-            margin: 0;
-            font-size: 18px;
-        }
-
+        
         .title {
+			
+			width:93%;
+			height:400px;
             text-align: left;
-            font-size: 70px;
+            font-size: 120px;
             font-weight: bold;
-            margin: 70px 50px;
-        }
-
-        .company {
-            color: #FFF;
-            font-family: Roboto;
-            font-size: 22px !important;
-            font-style: normal;
-            font-weight: bold;
-            line-height: normal;
-        }
-
-        .prepared-for p {
-            padding: 3px 0px;
-            margin: 0;
-            color: #fff;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-			font-family:'Poppins','sans-serif';
+			padding:50px 30px;
+			color:#fff;
         }
 
         .proposal {
-            padding: 50px 50px 80px 50px;
-            background-color: #292563;
+            /*padding: 50px 50px 80px 50px;*/
             /*position: absolute;*/
             bottom: 0;
             left: 0;
@@ -106,137 +68,6 @@
 			
         }
 
-        .proposal-dates {
-            margin-top: 40px;
-            text-align: center;
-            display: inline-block;
-            width: 100%;
-            color: #fff;
-			font-family:'Poppins','sans-serif';
-        }
-
-        .proposal-dates p {
-            float: left;
-            width: 33.33%;
-            text-align: left;
-            margin: 0;
-			font-family:'Poppins','sans-serif';
-        }
-
-        .proposal-dates p span.small {
-            color: #8583A5;
-            font-family: Roboto;
-            font-size: 13px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            padding-bottom: 5px !important;
-            display: block;
-			font-family:'Poppins','sans-serif';
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead {
-            background: #292563 !important;
-        }
-
-        thead tr,
-        thead th {
-            background: #292563 !important;
-            color: #fff;
-            border: none !important;
-            padding: 15px;
-        }
-
-        thead th {
-            padding-top: 15px !important;
-            padding-bottom: 15px !important;
-        }
-
-        tfoot,
-        tfoot tr {
-            background: #BC964B !important;
-            border: none !important;
-        }
-
-        tfoot td {
-            border: none !important;
-            padding: 15px !important;
-        }
-
-        .table th,
-        .table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        .table th {
-            background-color: #f2f2f2;
-            text-align: left;
-        }
-
-        .table tr:nth-child(odd) {
-            background-color: #fff;
-        }
-
-        .table tr:nth-child(even) {
-            background-color: #F1F1F1;
-        }
-
-        .table tfoot td {
-            font-weight: bold;
-        }
-
-        .payment-method {
-            margin-top: 20px;
-            text-align: left;
-            color: #313131;
-            font-family: Roboto;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 22px;
-			font-family: 'Poppins';
-        }
-
-        .payment-method h3 {
-            padding-top: 50px;
-			font-family: 'Poppins';
-        }
-
-        .payment-method p {
-            padding: 3px 0px;
-            margin: 0;
-            font-size: 16px;
-			font-family: 'Poppins';
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            left: 0px;
-			font-family: 'Poppins';
-        }
-
-.footer p{color:#313131c4 ;}
-        
-
-        ol li {
-            padding: 3px 0px;
-            color: #313131;
-			font-size:16px;
-			font-family: 'Poppins';
-			line-height:25px;
-        }
-       .terms h2{margin-top: 40px ;}
-	   .terms{margin-bottom: 20px ;}
 	   
         /* Page Breaks */
         @media print {
@@ -254,10 +85,34 @@
             }
         }
 		
-	@page { margin: 10px; }
-	body { margin: 10px; 
+	@page { margin:  15px 10px; }
+	body { margin: 15px 10px; 
 	font-family: 'Poppins';
 	}
+	
+	table td {	padding-left:10px;	}
+	.w-50	{	width:50%;	}
+	.w-20	{	width:20%;	}
+	.w-15 { width:15%;}
+	.td-border	{	border:.05rem solid #000;	}
+	.mt-2{margin-top:2rem;}
+	.mt-3	{	margin-top:3rem;	}
+	.mb-1	{	margin-bottom:1.5rem;	}
+	.h-3	{	height:2rem;	}
+	.h-5	{	height:5rem;	}
+	.sub-title	{	font-size:20px;		color:#c7870f;	}
+	.sub-title-2{	font-size:18px;		background:#c7870f;	}
+	.col-w-60	{	width:60%;	}
+	 h2	{		font-size:20px;	}
+	.tb-border	{	border:.05rem solid #000;	}
+	.br-right	{	border-right:.05rem solid #000;	}
+	.br-left	{	border-left:.05rem solid #000;	}
+	.br-top	{		border-top:.05rem solid #000;	}
+	.br-bottom	{	border-bottom:.05rem solid #000;	}
+	.f-weight{	font-weight:500;}
+	.lh-35{	height:35px;}
+	 ul li{	line-height:30px;}
+
     </style>
 	
 </head>
@@ -265,149 +120,234 @@
 <body style="font-family: 'Poppins';">
     <div class="page">
         <div class="page-header">
-            <div class="logo"><img src="{{public_path('/assets/images/ezbizz-logo.png')}}" alt="Logo"> </div>
+		<table style="width:100%;" >
+		<tr><td>
+            <div class="logo"><img src="{{public_path('/assets/images/ezbizz-logo.png')}}" alt="Logo">	</div>
+			</td>
+			<td style="text-align:right;">
+                <p style="margin:5px 0px 5px 0px;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</p>
+                <p style="margin:5px 0px 5px 0px;">{{$user_dt->email}}</p>
+                <p style="margin:5px 0px 5px 0px;">{{$user_dt->website}}</p>
+				<p style="margin:5px 0px 5px 0px;">{{$user_dt->address}}, {{$user_dt->location}}, {{$user_dt->country}}.</p>
+			</td>
+			</tr>
+			
+			</table>
 
-            <div class="contact-info">
-                <p class="company-title">{{$user_dt->company_name}}</p>
-                <p>{{$user_dt->address}},{{$user_dt->location}},{{$user_dt->country}}.</p>
-                <p>+{{$user_dt->country_code." ".$user_dt->mobile_number}}</p>
-                <p>{{$user_dt->email}}</p>
-                <p>{{$user_dt->website}}</p>
-            </div>
+			<table class="mt-2" style="width:100%;" >
+			<tr style="height:70px;"><td >&nbsp;</td><td style="width:60%;">
+					<img src="{{public_path('/uploads/line.png')}}" style="width:100%;">
+			</td></tr>	
+			</table>
+
+
         </div>
-        <div class="title">
-            BUSINESS <br>PROPOSAL
-        </div>
-        <div class="proposal">
-            <div class="prepared-for">
-                <p>Prepared for</p>
-                <p class="company">{{$prop->company}}</p>
-                <p>{{$prop->address}}</p>
-                <p>{{$prop->location.", ".$prop->country}}
-				@if($prop->pincode!="")
-				{{", ".$prop->pincode}}
-				@endif
-			</p>
-                <!--<p>Kozhikode, Kerala 673016</p>-->
-            </div>
-            <div class="proposal-dates">
-                <p>
-                   <span class="small"> Proposal issued:</span> 
-                    <span>{{date_create($prop->issued_date)->format('d-F-Y')}}</span>
-                </p>
-                <p>
-                   <span class="small">Proposal valid to:</span>  
-                    <span>{{date_create($prop->valid_to)->format('d-F-Y')}}</span>
-                </p>
-                <p>
-                   <span class="small">Proposal number:</span> 
-                    <span>{{$prop->ref_no}}</span>
-                </p>
-            </div>
-        </div>
-         
-    </div>
-
-    <div class="page" style="padding-top:0px !important;">
-        <div class="page-header" style="margin-left: 0px;">
-            <h2 style="text-align: left;">Service we provide</h2>
-        </div>
-        <div class="table-container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Qty</th>
-                        <th width="100px">Price</th>
-                        <th width="100px">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-				@php
-				  $tot=0;
-				  $currency=$user_dt->currency;
-				@endphp
-				
-				@foreach($pitems as $row)
-				@php
-				$tot+=$row->total_price;
-				$currency=$row->currency;
-				@endphp
-				
-                    <tr>
-                        <td>{{$row->description}}</td>
-                        <td>{{$row->qty}}</td>
-                        <td>{{$row->price." ".$user_dt->currency}}</td>
-                        <td>{{$row->total_price." ".$user_dt->currency}}</td>
-                    </tr>
-                @endforeach
-                    <!-- More rows here -->
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" style="text-align: right;">Total: {{number_format($tot,2,'.',',')}}&nbsp;{{$user_dt->currency}}</td>
-                    </tr>
-                </tfoot>
-            </table>
-            <div class="payment-method">
-                <h3>Payment method:</h3>
-                <p>Bank Account Transfer</p>
-                <p>Bank Name: WIO Bank Ez Bizz Corporate Services LLC</p>
-                <p>IBAN: AE930860000009707448772</p>
-                <p>Account Number: 9707448772</p>
-                <p>BIC/SWIFT: WIOBAEADXXX</p>
-            </div>
-            <div class="footer">
-                <p>www.ezbizzsetup.com</p>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="page terms">
-        <h2>Generic Terms and Condition:</h2>
-        <ol>
-            <li>Gov't Cost will be payable as per gov't voucher</li>
-            <li>External approval based on business activities (if required) as per actuals.</li>
-            <li>Bank account consult charges start from AED 2500 to 10k depending on bank and activities.</li>
-            <li>VAT was introduced in UAE since January 2018. If your company crosses yearly turnover of AED 375,000 or is going to cross in the next 30 days, it is mandatory to register for VAT. We also help with VAT registration.</li>
-        </ol>
-
-        <h2>Documents required</h2>
-        <ol>
-            <li>Colored passport copies of shareholder with 6 months validity</li>
-            <li>Shareholder email, residence address & contact details</li>
-            <li>Three trade names options</li>
-            <li>Passport size photographs</li>
-            <li>Visa copy (Visit or residence permit)</li>
-            <li>Shareholder contact details (residence address, email address and contact number) Existing UAE visa with Emirates ID (if available)</li>
-        </ol>
-
-        <h2>Process & Timeline</h2>
-        <ol>
-            <li>Initial approval & name reservation for the company</li>
-            <li>Submission of documents to the mainland after they are filled and signed</li>
-            <li>License 3-5 working days</li>
-            <li>Establishment card issuance 3-5 working days</li>
-            <li>Visa process 5-7 working days</li>
-        </ol>
-
-        <h2>Terms and Condition:</h2>
-        <ol>
-            <li>Prices for government services may or may not change, however, any new prices will come into force if there are any changes in prices as per UAE government.</li>
-            <li>Any visa is subject to security approval, as well as immigration approval.</li>
-            <li>Any additional documents required by the immigration authority have to be furnished.</li>
-            <li>Visa issuance is subject to immigration approval.</li>
-            <li>Inside country changes of status will be applicable AED 2000 each.</li>
-            <li>Service charges will be payable in advance and are non-refundable.</li>
-            <li>In case of visa been rejected, the amount spent on the service will be non-refundable.</li>
-        </ol>
-
-		<div class="footer">
-            <p>www.ezbizzsetup.com</p>
-		</div>
 		
+		<div class=" mt-2">
+		    <div style="position:absolute;z-index:999999;font-size:100px;color:#fff;margin:50px 0px 0px 20px;"> BUSINESS <br>PROPOSAL </div>
+			<img src="{{public_path('/uploads/').$banner->banner}}" style="width:100%;height:400px;"> 
+
+        </div>
+		
+		<table style="width:100%;margin-left:-15px;" class="mt-2" >
+			<tr><td style="width:60%;"><img src="{{public_path('/uploads/line.png')}}" style="width:100%;"> </td><td style="text-align:right;">&nbsp;</td></tr>
+		</table>
+		
+		
+        <div class="proposal" style="margin-top:50px;">
+		
+            <table  style="width:100%;" cellspacing=0>
+				<tr><td colspan=2 class="w-50 sub-title" height="50px">Quotation Prepared BY</td><tr>
+				<tr ><td class="w-50 td-border" >Business Consultant Name</td><td class="w-50 td-border">{{ucwords($user_name)}} </td></tr>
+			</table>
+		</div>
+	</div>
+		
+		<div class="page proposal" >
+			<table style="width:100%;" cellspacing=0>
+				<tr><td colspan=2 class="sub-title mb-1" style="height:60px;" >To :</td><tr>
+				<tr ><td class="w-50 tb-border">Customer Name</td><td class="w-50 tb-border">{{$prop->customer_name}}</td></tr>
+			</table>
+			
+			<table class="mt-3 " style="width:100%;height:50px;" cellspacing=0>
+				<tr><td colspan=4 class="sub-title">Customer Details :</td></tr>
+			</table>
+						
+			<table style="width:100%;" cellspacing=0 class="tb-border">
+				<tr class="br-bottom">
+				<td class="w-20 h-3 br-right br-bottom">Phone Number</td><td class="br-right br-bottom" >{{$prop->country_code.$prop->phone_number}}</td>
+				<td class="w-20 h-3 br-right br-bottom">Email</td><td class="br-bottom">{{$prop->email}}</td>
+				</tr>
+				
+				<tr>
+				<td class="h-5  br-right br-bottom">Business Activity</td><td colspan=3 class="br-bottom">{{$prop->activity}}</td>
+				</tr>
+				
+				<tr>
+				<td class="h-3 br-right br-bottom">Activity Code</td><td class="br-right br-bottom">{{$prop->activity_code}}</td>
+				<td class="h-3 br-right br-bottom">Juridiction</td><td class="br-bottom">{{$prop->juridiction}}</td>
+				</tr>
+				
+				<tr>
+				<td class="br-right ">No of Visa</td><td class="br-right">{{$prop->no_of_visa}}</td>
+				<td class="br-right ">No of Shareholders</td><td >{{$prop->shareholders}}</td>
+				</tr>
+				
+			</table>
+
+	<div class="mt-3">
+
+		@php
+			$gtot=0;
+		@endphp
+		
+		@foreach($data['value_headings'] as $row)
+		
+			@php
+			   $tot=0;
+				$values=\App\Models\ProposalValue::where('proposal_id',$prop->id)->where('proposal_value_heading',$row->value_heading)->get();
+			@endphp
+		@if(!$values->isEmpty())
+			<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
+			<tr><td colspan=3 class="sub-title-2 br-bottom" >{{$row->value_heading}}</td></tr>
+
+				@foreach($values as $r)
+				
+					<tr><td class="col-w-60 br-right br-bottom" >{{$r->proposal_heading_item}}</td><td class="br-right br-bottom">{{$r->include_option}}</td>
+					<td style="width:150px;text-align:right;" class="br-bottom"><span style="margin-right:30px">{{$r->currency}}</span><span>{{number_format($r->amount,2,'.',',')}}</span></td></tr>
+					@php
+						$tot+=$r->amount;
+						$gtot+=$r->amount;
+					@endphp
+				@endforeach
+			<tr class="sub-title-2"><td class="col-w-60 br-right" >Total</td><td class="br-right">&nbsp;</td><td style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($tot,2,'.',',')}}</td></tr>
+			</table>
+		@endif
+		
+		@endforeach
+			
+		<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" >Sub Total</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</td></tr>
+		</table>
+		
+		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" >Discount</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</td></tr>
+		</table>
+		
+		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" ><b>Net Total<b></td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</b></td></tr>
+		</table>
+				
+    
+        <h2 class="sub-title f-weight mt-3">Special Services:</h2>
+		
+		<ul style="width:100%;">
+		@foreach($data['special_service'] as $row)
+            <li>{{$row->service_data}}</li>
+		@endforeach
+		</ul>
+
+        <h2 class="sub-title f-weight mt-3">Other Services</h2>
+        <ul style="width:100%;">
+		@foreach($data['other_service'] as $row)
+            <li> {{$row->other_service}}</li>
+		@endforeach
+		</ul>
+
+		<div style="height:40px;">&nbsp;</div>
+		
+		
+        <h2 class="sub-title f-weight mt-3" >Bank Details</h2>
+		<table style="width:100%;" class="tb-border" cellspacing=0 >
+		<tr><td class="w-50 sub-title-2 br-right">Bank Account Details - Currency AED</td><td class="w-50 sub-title-2">Bank Account Details - Currency USD</td></tr>
+		<tr>
+		@foreach($data['bank_details'] as $key=>$row)
+		@if($key==0)
+			<td class="br-right" style="padding-left:0px;">
+				<table style="width:100%;">	
+					<tr class="lh-35" ><td class="br-bottom">Bank Name : {{$row->bank_name}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Account Name : {{$row->account_name}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">IBAN Number : {{$row->iban_number}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Swift Code : {{$row->swift_code}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Account Number : {{$row->account_number}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Currency : {{$row->currency}}</td></tr>
+					<tr class="lh-35"><td >Branch : {{$row->branch_name}}</td></tr>
+				</table>
+			</td>
+		@else
+			<td style="padding-left:0px;">
+				<table style="width:100%;" >	
+					<tr class="lh-35"><td class="br-bottom">Bank Name : {{$row->bank_name}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Account Name : {{$row->account_name}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">IBAN Number : {{$row->iban_number}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Swift Code : {{$row->swift_code}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Account Number : {{$row->account_number}}</td></tr>
+					<tr class="lh-35"><td class="br-bottom">Currency : {{$row->currency}}</td></tr>
+					<tr class="lh-35"><td >Branch : {{$row->branch_name}}</td></tr>
+				</table>
+			</td>
+		@endif
+
+		@endforeach
+		</tr>
+		</table>
+		
+		<h2 class="sub-title f-weight mt-3">Documents Required</h2>	
+		
+        <ul>
+		@foreach($data['documents'] as $row)
+		    <li>{{$row->document_value}}</li>
+		@endforeach
+        </ul>
+
+        <h2 class="sub-title f-weight mt-3">Process & Timeline:</h2>
+
+        <ul>
+		@foreach($data['timeline'] as $row)
+		    <li>{{$row->process_timeline}}</li>
+		@endforeach
+        </ul>
+				
+		<h2 class="sub-title f-weight mt-3">Notes:</h2>
+		
+        <ul>
+		@foreach($data['notes'] as $row)
+		    <li>{{$row->note}}</li>
+		@endforeach
+        </ul>
+		
+		
+		<h2 class="sub-title f-weight mt-3">Conditions:</h2>
+		
+        <ul>
+		
+		@foreach($data['conditions'] as $row)
+		    <li>{{$row->condition}}</li>
+		@endforeach
+        </ul>
+
+		<h2 class="sub-title f-weight mt-3">I acknowledge that I have read and understood.</h2>
+
+		<table style="width:100%;" cellspacing=15>
+		<tr><td class="w-20">Maker</td><td class="w-20">Checker</td><td class="w-20">Approval</td><td>Customer Signature</td><td>Final Approval</td></tr>
+		<tr><td style="height:70px;" class="br-bottom">&nbsp; </td>
+		<td class="br-bottom">&nbsp;</td>
+		<td class="br-bottom">&nbsp;</td>
+		<td class="br-bottom">&nbsp;</td>
+		<td class="br-bottom">&nbsp;</td>
+		</tr>
+		
+		<tr style="font-size:14px;"><td >Date:&nbsp;</td>
+		<td >Date:&nbsp;</td>
+		<td >Date:&nbsp;</td>
+		<td >Date:&nbsp;</td>
+		<td >Date:&nbsp;</td>
+		</tr>
+		</table>
+
+
     </div>
+	</div>
 			
 </body>
 

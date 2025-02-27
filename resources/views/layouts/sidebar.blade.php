@@ -5,7 +5,7 @@
               <img src="{{url('assets/images/logos/gl-logo.svg')}}" class="logo-icon" alt="logo icon">
             </div>
             <div>
-              <h4 class="logo-text">GETLEAD</h4>
+              <h4 class="logo-text" style="color:#fff !important;">GETLEAD</h4>
             </div>
             <div class="toggle-icon ms-auto"><i class="bi bi-list"></i>
             </div>
