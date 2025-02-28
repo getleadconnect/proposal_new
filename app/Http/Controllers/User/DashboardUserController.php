@@ -38,8 +38,17 @@ class DashboardUserController extends Controller
 		
 	return view('users.dashboard.dashboard',compact('data'));
   }	
-
-      
+   
+public function staffDashboard()
+  {
+	$vendor_id=User::getVendorId();
+	
+	$data['total_count']=Proposal::proposalCount($vendor_id);
+	$data['this_month']=Proposal::proposalThisMonth($vendor_id);
+		
+	return view('users.dashboard.staff_dashboard',compact('data'));
+  }	
+   
  
    
 }

@@ -37,34 +37,35 @@
                         <div class="col-12 col-lg-12 col-xl-12 col-xxl-12">
 						   <div class="row" style="padding:3px 10px 0px 10px;" >
 						   
-						   <div class="col-2 col-lg-2">
-								<label>Ref No</label>
-								<input type="text" class="form-control" id="flt_ref_no" placeholder="center" required>
-							</div>
-							
-							<div class="col-3 col-lg-3">
+							<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
 								<label>Date</label>
-								<input type="text" class="form-control" id="flt_date" placeholder="center" required>
+							<div style="display:flex;">
+								<input type="date" class="form-control" style="width:170px;" id="flt_date_from" placeholder="center" required>
+								&nbsp;<input type="date" class="form-control" style="width:170px;" id="flt_date_to" placeholder="center" required>
+							</div>
 							</div>
 							
 							<div class="col-3 col-lg-3">
 								<label>Customer</label>
-								<select class="form-control mb-3" id="flt_district" placeholder="district" required>
+								<select class="form-control mb-3" id="flt_customer" placeholder="district" required>
 								<option value="">select</option>
-
+									@foreach($customer as $row)
+										<option value="{{$row->customer_name}}">{{$row->customer_name}}</option>
+									@endforeach
 								</select>
 							</div>
 							
-							<div class="col-1 col-lg-1 col-xl-1 col-xxl-1">
+							<div class="col-2 col-lg-2 col-xl-2 col-xxl-2">
 								<label style="width:100%;">&nbsp;&nbsp;</label>
-								<button type="button" class="btn btn-primary">Filter </button>
+								<button type="button" class="btn btn-primary" id="btn-filter" >Filter </button>&nbsp;&nbsp;
+								<button type="button" class="btn btn-secondary" id="btn-clear" >Clear </button>
 							</div>
 							
 						   </div>
 					  </div>
 					  
 					</div>
-				<hr style="margin-top:0px;">
+				<hr style="margin-top:0px;border-color:#a0a0a0;">
 				
                    <div class="row mt-2">
                      <div class="col-12 col-lg-12 d-flex">
@@ -83,7 +84,8 @@
 									<th>Juridiction</th>
 									<th>Visa/Share</th>
 									<th>Created On</th>
-									<th class="no-content" style="width:50px;">Actions</th>
+									<th>Created By</th>
+									<th class="no-content" style="width:100px;">Actions</th>
 								</tr>
 
                                </thead>
@@ -177,6 +179,9 @@ var table = $('#datatable').DataTable({
 			data: function (data) 
 		    {
                //data.search = $('input[type="search"]').val();
+			   data.customer = $('#flt_customer').val();
+			   data.date_from = $('#flt_date_from').val();
+			   data.date_to = $('#flt_date_to').val();
 		    },
         },
 
@@ -189,11 +194,24 @@ var table = $('#datatable').DataTable({
 				{data: 'juridiction', name: 'juridiction'},
 				{data: 'visa', name: 'visa'},
 				{data: 'created_on', name: 'created_on'},
+				{data: 'user_name', name: 'user_name'},
                 {data: 'action', name: 'action'},
                 ]
 
 });
 
+$(document).on('click','#btn-filter',function()
+{
+	$('#datatable').DataTable().ajax.reload(null,false);
+});
+
+$(document).on('click','#btn-clear',function()
+{
+	$('#flt_customer').val("");
+	$('#flt_date_from').val("");
+	$('#flt_date_to').val("");
+	$('#datatable').DataTable().ajax.reload(null,false);
+});
 
 $('#datatable tbody').on('click','.btn-delete',function()
 {

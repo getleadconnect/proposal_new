@@ -197,15 +197,11 @@
 
 	<div class="mt-3">
 
-		@php
-			$gtot=0;
-		@endphp
-		
 		@foreach($data['value_headings'] as $row)
 		
 			@php
-			   $tot=0;
-				$values=\App\Models\ProposalValue::where('proposal_id',$prop->id)->where('proposal_value_heading',$row->value_heading)->get();
+			$tot=0;
+				$values=\App\Models\ProposalValue::where('proposal_id',$prop->id)->where('proposal_value_heading_id',$row->id)->get();
 			@endphp
 		@if(!$values->isEmpty())
 			<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
@@ -215,27 +211,31 @@
 				
 					<tr><td class="col-w-60 br-right br-bottom" >{{$r->proposal_heading_item}}</td><td class="br-right br-bottom">{{$r->include_option}}</td>
 					<td style="width:150px;text-align:right;" class="br-bottom"><span style="margin-right:30px">{{$r->currency}}</span><span>{{number_format($r->amount,2,'.',',')}}</span></td></tr>
-					@php
-						$tot+=$r->amount;
-						$gtot+=$r->amount;
-					@endphp
+				@php
+				$tot+=$r->amount;
+				@endphp
+				
 				@endforeach
 			<tr class="sub-title-2"><td class="col-w-60 br-right" >Total</td><td class="br-right">&nbsp;</td><td style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($tot,2,'.',',')}}</td></tr>
 			</table>
 		@endif
 		
 		@endforeach
-			
+		
+		@php
+		$net_total=$prop->total_amount-$prop->discount;
+		@endphp
+		
 		<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" >Sub Total</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</td></tr>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" >Sub Total</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->total_amount,2,'.',',')}}</td></tr>
 		</table>
 		
 		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" >Discount</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</td></tr>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" >Discount</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->discount,2,'.',',')}}</td></tr>
 		</table>
 		
 		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" ><b>Net Total<b></td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($gtot,2,'.',',')}}</b></td></tr>
+		<tr class="sub-title-2"><td class="col-w-60 br-right" ><b>Net Total<b></td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($net_total,2,'.',',')}}</b></td></tr>
 		</table>
 				
     

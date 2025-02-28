@@ -23,7 +23,7 @@ class Authware
 		
         $user = Auth::user();
 				
-        if ($user->isAdmin() or $user->isUser()){
+        if ($user->isAdmin() or $user->isUser() or $user->isStaff()){
 				return $next($request);
         }
 		else

@@ -55,7 +55,9 @@ Route::group(['prefix'=>'users','as'=>'users.','middleware' => 'authware'], func
 
 Route::controller(DashboardUserController::class)->group(function() {
 	Route::get('/dashboard', 'index')->name('dashboard');
+	Route::get('/staff-dashboard', 'staffDashboard')->name('staff-dashboard');
 });
+
 
 Route::controller(ProposalController::class)->group(function() {
 	
@@ -66,12 +68,32 @@ Route::controller(ProposalController::class)->group(function() {
 	
 	Route::get('/delete-proposal/{id}', 'destroy')->name('delete-proposal');
 	
+	
 	/*Route::get('/new-proposal', 'newProposal')->name('new-proposal');
 	Route::post('/save-proposal-temp-item', 'saveProposalTempItem')->name('save-proposal-temp-item');
 	Route::get('/get-proposal-temp-items', 'getProposalTempItems')->name('get-proposal-temp-items');
 	Route::get('/delete-proposal-temp-item/{id}', 'deleteProposalTempItem')->name('delete-proposal-temp-item');
 	Route::post('/save-proposal', 'saveProposal')->name('saveProposal');*/
 
+});
+
+Route::controller(NewProposalController::class)->group(function() {
+
+	Route::get('/proposal/create', 'index')->name('new-proposal');
+	Route::get('/view-proposal-values', 'viewProposalTempValues')->name('view-proposal-values');
+	Route::post('/save-proposal-value', 'store')->name('save-proposal-value');
+	Route::get('/delete-proposal-value/{id}', 'destroy')->name('delete-proposal-value');
+	Route::post('/save-new-proposal', 'saveNewProposal')->name('save-new-proposal');
+	Route::get('/get-customer/{id}', 'getCustomer')->name('get-customer');
+	
+	Route::get('/edit-proposal/{id}', 'editProposal')->name('edit-proposal');
+	Route::get('/view-proposal-values-for-edit/{id}', 'viewProposalValuesForEdit')->name('view-proposal-values-for-edit');
+	Route::post('/update-proposal-customer', 'updateProposalAndCustomer')->name('update-proposal-customer');
+	Route::post('/update-proposal-item-value', 'updateProposalItemValue')->name('update-proposal-item-value');
+	Route::post('/save-new-proposal-item', 'addNewProposalItem')->name('save-new-proposal-item');
+	Route::get('/get-proposal-item-total-amount', 'getProposalItemTotalAmount')->name('get-proposal-item-total-amount');
+	Route::get('/get-proposal-item-total-amount-edit/{id}', 'getProposalItemTotalAmountForEdit')->name('get-proposal-item-total-amount-edit');
+		
 });
 
 
@@ -181,16 +203,7 @@ Route::controller(ProposalHeadingsController::class)->group(function() {
 });
 
 
-Route::controller(NewProposalController::class)->group(function() {
 
-	Route::get('/proposal/create', 'index')->name('new-proposal');
-	Route::get('/view-proposal-values', 'viewProposalTempValues')->name('view-proposal-values');
-	Route::post('/save-proposal-value', 'store')->name('save-proposal-value');
-	Route::get('/delete-proposal-value/{id}', 'destroy')->name('delete-proposal-value');
-	Route::post('/save-new-proposal', 'saveNewProposal')->name('save-new-proposal');
-	Route::get('/get-customer/{id}', 'getCustomer')->name('get-customer');
-
-});
 
 
 });

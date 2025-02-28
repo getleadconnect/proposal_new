@@ -104,7 +104,7 @@ class StaffUsersController extends Controller
         })
 		
 		->addColumn('status', function ($row) {
-            if ($row->int_status==1) {
+            if ($row->status==1) {
                 $status='<span class="badge rounded-pill bg-success">Active</span>';
             } else {
                 $status='<span class="badge rounded-pill bg-danger">Inactive</span>';

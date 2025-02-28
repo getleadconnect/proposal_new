@@ -887,3 +887,13 @@
 {
 	color:red;
 }
+
+.btn-white:hover
+{
+	background:#95afe7;
+}
+
+.btn-white-sm
+{
+	padding:2px 5px;
+}

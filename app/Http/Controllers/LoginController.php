@@ -81,52 +81,55 @@ class LoginController extends Controller
 		else
 		{
 		
-		try
-		{
-			
-			$credentials['mobile'] = substr($request->full_number,1);   //intlInput variable for mobile
-			$credentials['password'] = $request->password;
-			
-			$user = User::where('status',1)->where('user_mobile', $credentials['mobile'])->first();
-			
-			if ($user && Hash::check($credentials['password'], $user->password)) 
+			try
 			{
-				Auth::login($user);
-
-				$user->datetime_last_login = Carbon::now();
-				$rs=$user->save();
-								
-				if ($user->status == Variables::ACTIVE)
+				
+				$credentials['mobile'] = substr($request->full_number,1);   //intlInput variable for mobile
+				$credentials['password'] = $request->password;
+				
+				$user = User::where('status',1)->where('user_mobile', $credentials['mobile'])->first();
+				
+				if ($user && Hash::check($credentials['password'], $user->password)) 
 				{
+					Auth::login($user);
+
+					$user->datetime_last_login = Carbon::now();
+					$rs=$user->save();
 									
-					if ($user->role_id == Variables::ADMIN) 
+					if ($user->status == Variables::ACTIVE)
 					{
-			
-						return redirect('admin/dashboard');
+										
+						if ($user->role_id == Variables::ADMIN) 
+						{
+							return redirect('admin/dashboard');
+						}
+						else if($user->role_id==Variables::USER)
+						{
+							 return redirect('users/dashboard');
+						}
+						else  //staff
+						{
+							 return redirect('users/staff-dashboard');
+						}
+						
 					}
-					else  //users
+					else
 					{
-						 return redirect('users/dashboard');
+						Session::flash('error','Your account has been deactivated,Please contact your administrator');
 					}
-					
+
 				}
 				else
 				{
-					Session::flash('error','Your account has been deactivated,Please contact your administrator');
-				}
-
+					Session::flash('error','Invalid credentials. Try again');
+					return back();
+				}			
 			}
-			else
+			catch(\Exception $e)
 			{
-				Session::flash('error','Invalid credentials. Try again');
-				return back();
-			}			
-		}
-		catch(\Exception $e)
-		{
-			Session::flash('error',$e->getMessage());
-			
-		}
+				Session::flash('error',$e->getMessage());
+				
+			}
 		
 		}
 	
