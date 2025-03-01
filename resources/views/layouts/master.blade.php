@@ -81,7 +81,7 @@
                   </a>
                </li>
 
-              <li class="nav-item dropdown dropdown-large">
+              <!--<li class="nav-item dropdown dropdown-large">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                   <div class="notifications">
                     <span class="notify-badge">8</span>
@@ -120,7 +120,7 @@
                      </a>
                  </div>
                 </div>
-              </li>
+              </li>-->
               </ul>
               </div>
               <div class="dropdown dropdown-user-setting">
