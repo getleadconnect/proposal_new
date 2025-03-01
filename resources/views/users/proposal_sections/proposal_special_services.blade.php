@@ -60,7 +60,7 @@
 					   <div class="row mt-3">
 						<div class="col-3 col-lg-3 col-xl-3 col-xxl-3">
 						
-						@include('users.proposal_section.proposal_options');
+						@include('users.proposal_sections.proposal_options');
 
 						</div>
 						
