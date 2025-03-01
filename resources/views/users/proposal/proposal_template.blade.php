@@ -91,6 +91,7 @@
 	}
 	
 	table td {	padding-left:10px;	}
+	.pr-1{padding-right:.7rem;}
 	.w-50	{	width:50%;	}
 	.w-20	{	width:20%;	}
 	.w-15 { width:15%;}
@@ -205,18 +206,44 @@
 			@endphp
 		@if(!$values->isEmpty())
 			<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
-			<tr><td colspan=3 class="sub-title-2 br-bottom" >{{$row->value_heading}}</td></tr>
+			<tr><td colspan=4 class="sub-title-2 br-bottom" >{{$row->value_heading}}</td></tr>
 
 				@foreach($values as $r)
 				
-					<tr><td class="col-w-60 br-right br-bottom" >{{$r->proposal_heading_item}}</td><td class="br-right br-bottom">{{$r->include_option}}</td>
-					<td style="width:150px;text-align:right;" class="br-bottom"><span style="margin-right:30px">{{$r->currency}}</span><span>{{number_format($r->amount,2,'.',',')}}</span></td></tr>
+					<tr><td class="col-w-60 br-right br-bottom" >{{$r->proposal_heading_item}}</td>
+					<td class="br-right br-bottom">
+					@if($row->id!=4)
+						{{$r->include_option}}
+					@else
+						<span style="padding-right:20px;">-</span>
+					@endif
+					</td>
+					<td width="30px;" class="br-bottom">
+					{{$r->currency}}
+					</td>
+					<td class="pr-1 br-bottom" style="width:120px;text-align:right;" >
+					@if($row->id!=4)
+						<span>{{number_format($r->amount,2,'.',',')}}</span>
+					@else
+						<span style="padding-right:20px;">-</span>
+					@endif
+					</td></tr>
+					
 				@php
-				$tot+=$r->amount;
-				@endphp
-				
+					$tot+=$r->amount;
+				@endphp	
+					
 				@endforeach
-			<tr class="sub-title-2"><td class="col-w-60 br-right" >Total</td><td class="br-right">&nbsp;</td><td style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($tot,2,'.',',')}}</td></tr>
+			<tr class="sub-title-2"><td class="col-w-60 br-right" >Total</td><td class="br-right">&nbsp;</td>
+			<td width="30px;">{{$r->currency}}</td>
+			<td class="pr-1" style="text-align:right;font-weight:500;" >
+			
+			@if($row->id!=4)
+					{{number_format($tot,2,'.',',')}}
+			@else
+				<span style="padding-right:20px;">-</span>
+			@endif
+		</td></tr>
 			</table>
 		@endif
 		
@@ -226,16 +253,16 @@
 		$net_total=$prop->total_amount-$prop->discount;
 		@endphp
 		
-		<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" >Sub Total</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->total_amount,2,'.',',')}}</td></tr>
+		<table class="tb-border mt-3"  style="width:100%;" cellspacing=0>
+		<tr class="sub-title-2"><td >Sub Total</td><td class="pr-1" style="width:195px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->total_amount,2,'.',',')}}</td></tr>
 		</table>
 		
 		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" >Discount</td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->discount,2,'.',',')}}</td></tr>
+		<tr class="sub-title-2"><td >Discount</td><td  class="pr-1" style="width:195px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->discount,2,'.',',')}}</td></tr>
 		</table>
 		
 		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
-		<tr class="sub-title-2"><td class="col-w-60 br-right" ><b>Net Total<b></td><td colspan=2 style="width:130px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($net_total,2,'.',',')}}</b></td></tr>
+		<tr class="sub-title-2"><td ><b>Net Total<b></td><td  class="pr-1" style="width:195px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($net_total,2,'.',',')}}</b></td></tr>
 		</table>
 				
     
