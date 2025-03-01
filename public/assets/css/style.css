@@ -55,8 +55,7 @@ a {
     top: 0;
     left: 260px;
     right: 0;
-    /*background-color: #ffffff ; /*#f7f8fa;*/
-	background-color: #433653;
+    background-color: #ffffff ; 
     border-bottom: 1px solid #e2e3e4;
     background-clip: padding-box;
     height: 60px;
@@ -307,7 +306,7 @@ a {
     border-left: 1px solid #e2e3e4;
     border-right: 1px solid #e2e3e4;
     border-bottom: 1px solid #e2e3e4;
-    background-color: #433653;
+    background-color: #fff;
     height: 60px;
     padding: 0 16px;
     z-index: 1;
@@ -322,7 +321,7 @@ a {
 
 .top-header .navbar .user-name{
     font-size: 16px;
-    color: #fff;
+    color: #5e5e5e;
     font-weight: 500;
 }
 
