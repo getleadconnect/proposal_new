@@ -55,20 +55,7 @@
 			color:#fff;
         }
 
-        .proposal {
-            /*padding: 50px 50px 80px 50px;*/
-            /*position: absolute;*/
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 0;
-            box-sizing: border-box;
-			margin-right:10px;
-			font-family:'Poppins','sans-serif';
-			
-        }
-
-	   
+   
         /* Page Breaks */
         @media print {
             .page {
@@ -91,6 +78,39 @@
 	font-family: 'Poppins';
 	}
 	
+			header {
+                /*position: fixed;*/
+				top: -10px; 
+                left: 0px;
+                right: 0px;
+                height: 30px;
+                font-size: 11px !important;
+                text-align: center;
+                line-height: 25px;
+            }
+
+            footer {
+                /*position: fixed; */
+				 bottom: 20px; 
+                left: 0px; 
+                right: 0px;
+                height: 30px; 
+				margin-bottom:-10px;
+                font-size: 11px !important;
+                text-align: center;
+                line-height: 25px;
+            }
+
+			/*footer .page-number:after { content: counter(page); }*/
+			
+        .header img {
+            width: 200px;
+            float: left;
+        }
+	
+	
+	
+	
 	table td {	padding-left:10px;	}
 	.pr-1{padding-right:.7rem;}
 	.w-50	{	width:50%;	}
@@ -102,25 +122,33 @@
 	.mb-1	{	margin-bottom:1.5rem;	}
 	.h-3	{	height:2rem;	}
 	.h-5	{	height:5rem;	}
-	.sub-title	{	font-size:20px;		color:#c7870f;	}
-	.sub-title-2{	font-size:18px;		background:#c7870f;	}
+	.sub-title	{	font-size:16px;		color:#c7870f;	}
+	.sub-title-2{	font-size:16px;		background:#c7870f;	}
 	.col-w-60	{	width:60%;	}
-	 h2	{		font-size:20px;	}
+	 h2	{		font-size:16px;	}
 	.tb-border	{	border:.05rem solid #000;	}
 	.br-right	{	border-right:.05rem solid #000;	}
 	.br-left	{	border-left:.05rem solid #000;	}
 	.br-top	{		border-top:.05rem solid #000;	}
 	.br-bottom	{	border-bottom:.05rem solid #000;	}
 	.f-weight{	font-weight:500;}
-	.lh-35{	height:35px;}
-	 ul li{	line-height:30px;}
+	.lh-35{	height:30px;}
+	 ul li{	line-height:28px;}
 
     </style>
 	
 </head>
 
-<body style="font-family: 'Poppins';">
+<body style="font-family: 'Poppins'; font-size:13px;">
+
     <div class="page">
+
+	<header>
+		<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;text-align:left;">Ez Bizz Corporate Services LLC</td><td style="font-size:11px;text-align:center;width:33.3%;">Business Proposal</td><td style="font-size:11px;text-align:right;width:33.3%;">{{date('m-d-Y h:i A')}}</td></tr>
+		</table>
+	</header>
+	
         <div class="page-header">
 		<table style="width:100%;" >
 		<tr><td>
@@ -133,7 +161,7 @@
 				<p style="margin:5px 0px 5px 0px;">{{$user_dt->address}}, {{$user_dt->location}}, {{$user_dt->country}}.</p>
 			</td>
 			</tr>
-			<tr style="height:70px;"><td >&nbsp;</td><td style="width:60%;"><img src="/uploads/line.png" style="width:100%;"></td></tr>	
+			<tr style="height:40px;"><td >&nbsp;</td><td style="width:60%;"><img src="/uploads/line.png" style="width:100%;"></td></tr>	
 			</table>
         </div>
 
@@ -190,10 +218,25 @@
 			</table>
 
         </div>
+					
+		<footer>
+		<table width="100%" class="mt-2" >
+			<tr><td style="font-size:11px;width:33.3%;text-align:left;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</td><td style="font-size:11px;text-align:center;width:33.3%;">www.ezbizzsetup.com</td><td style="font-size:11px;text-align:right;width:33.3%;"><span class="page-number">1 </span></td></tr>
+		</table>
+		</footer>
          
     </div>
 
+<hr>
+
     <div class="page" style="padding-top:0px !important;">
+	
+	<header>
+		<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;text-align:left;">Ez Bizz Corporate Services LLC</td><td style="font-size:11px;text-align:center;width:33.3%;">Business Proposal</td><td style="font-size:11px;text-align:right;width:33.3%;">{{date('m-d-Y h:i A')}}</td></tr>
+		</table>
+	</header>
+	
 
 		@foreach($data['value_headings'] as $row)
 		
@@ -264,23 +307,40 @@
 		</table>
 				
     
-        <h2 class="sub-title f-weight mt-3">Special Services:</h2>
+        <h2 class="sub-title f-weight mt-2">Special Services:</h2>
 		
 		<table style="width:100%;">
 		@foreach($data['special_service'] as $row)
-            <tr style="height:30px;"><td> <span style="font-size:25px;"></span></td><td>{{$row->service_data}}</td></tr>
+            <tr style="height:25px;"><td> <span style="font-size:14px;"></span></td><td>{{$row->service_data}}</td></tr>
 		@endforeach
 		</table>
 
-        <h2 class="sub-title f-weight mt-3">Other Services</h2>
-        <table style="width:100%;">
+        <h2 class="sub-title f-weight mt-2">Other Services</h2>
+        <table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
 		@foreach($data['other_service'] as $row)
             <tr style="height:30px;"><td> ● &nbsp;{{$row->other_service}}</td></tr>
 		@endforeach
+		</td></tr></table>
+
+
+
+<footer>
+		<table width="100%" class="mt-2" >
+			<tr><td style="font-size:11px;width:33.3%;text-align:left;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</td><td style="font-size:11px;text-align:center;width:33.3%;">www.ezbizzsetup.com</td><td style="font-size:11px;text-align:right;width:33.3%;"><span class="page-number"> 2</span></td></tr>
 		</table>
+		</footer>
+</div>
+	<hr>
+<div class="page" style="padding-top:0px !important;">
 
+	<header>
+		<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;text-align:left;">Ez Bizz Corporate Services LLC</td><td style="font-size:11px;text-align:center;width:33.3%;">Business Proposal</td><td style="font-size:11px;text-align:right;width:33.3%;">{{date('m-d-Y h:i A')}}</td></tr>
+		</table>
+	</header>
 
-        <h2 class="sub-title f-weight mt-3" >Bank Details</h2>
+        <h2 class="sub-title f-weight mt-2" >Bank Details</h2>
 		<table style="width:100%;" class="tb-border" cellspacing=0 >
 		<tr><td class="w-50 sub-title-2 br-right">Bank Account Details - Currency AED</td><td class="w-50 sub-title-2">Bank Account Details - Currency USD</td></tr>
 		<tr>
@@ -315,39 +375,63 @@
 		</tr>
 		</table>
 		
-		<h2 class="sub-title f-weight mt-3">Documents Required</h2>	
-		
+		<h2 class="sub-title f-weight mt-2">Documents Required</h2>	
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
         <ul>
 		@foreach($data['documents'] as $row)
 		    <li>{{$row->document_value}}</li>
 		@endforeach
         </ul>
-
-        <h2 class="sub-title f-weight mt-3">Process & Timeline:</h2>
-
+		</td></tr></table>
+		
+        <h2 class="sub-title f-weight mt-2">Process & Timeline:</h2>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
         <ul>
 		@foreach($data['timeline'] as $row)
 		    <li>{{$row->process_timeline}}</li>
 		@endforeach
         </ul>
-				
-		<h2 class="sub-title f-weight mt-3">Notes:</h2>
+		</td></tr></table>	
 		
-        <ul>
+		<h2 class="sub-title f-weight mt-2">Notes:</h2>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
+		<ul>
 		@foreach($data['notes'] as $row)
 		    <li>{{$row->note}}</li>
 		@endforeach
         </ul>
+		</td></tr>
+		</table>
 		
+	<footer>
+		<table width="100%" class="mt-2">
+			<tr><td style="font-size:11px;width:33.3%;text-align:left;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</td><td style="font-size:11px;text-align:center;width:33.3%;">www.ezbizzsetup.com</td><td style="font-size:11px;text-align:right;width:33.3%;"><span class="page-number">3 </span></td></tr>
+		</table>
+	</footer>
 		
-		<h2 class="sub-title f-weight mt-3">Conditions:</h2>
+</div>
+<hr>
+<div class="page" style="padding-top:0px !important;">
+
+	<header>
+		<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;text-align:left;">Ez Bizz Corporate Services LLC</td><td style="font-size:11px;text-align:center;width:33.3%;">Business Proposal</td><td style="font-size:11px;text-align:right;width:33.3%;">{{date('m-d-Y h:i A')}}</td></tr>
+		</table>
+	</header>
 		
+		<h2 class="sub-title f-weight mt-2">Conditions:</h2>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
         <ul>
 		
 		@foreach($data['conditions'] as $row)
 		    <li>{{$row->condition}}</li>
 		@endforeach
         </ul>
+		</td></tr></table>
 
 		<h2 class="sub-title f-weight mt-3">I acknowledge that I have read and understood.</h2>
 
@@ -368,6 +452,11 @@
 		</tr>
 		</table>
 
+	<footer>
+		<table width="100%" class="mt-2">
+			<tr><td style="font-size:11px;width:33.3%;text-align:left;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</td><td style="font-size:11px;text-align:center;width:33.3%;">www.ezbizzsetup.com</td><td style="font-size:11px;text-align:right;width:33.3%;"><span class="page-number">4</span></td></tr>
+		</table>
+	</footer>
 
     </div>
 			

@@ -8,15 +8,16 @@
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 	
     <style>
-        body {
+           body {
             font-family:'Poppins','sans-serif';
             margin: 0;
             padding: 0;
+			font-size:12px;
         }
 
         .page {
             /*width: 21cm;*/
-			width: 93%;
+			width: 92%;
             min-height: 26cm;
             margin: 0 auto;
             padding: 1cm;
@@ -33,19 +34,9 @@
 			min-height:100px;
         }
 
-        .page-header {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .page-header img {
-            width: 200px;
-            float: left;
-        }
-
-        
+       
         .title {
-			
+			background-image:url('/uploads/{{$banner->banner}}');
 			width:93%;
 			height:400px;
             text-align: left;
@@ -72,12 +63,13 @@
         /* Page Breaks */
         @media print {
             .page {
+				width:100%;
                 page-break-after: always;
                 position: relative;
             }
 
             .proposal {
-                position: absolute;
+				width:100%;
                 bottom: 0;
                 left: 1cm;
                 right: 1cm;
@@ -85,10 +77,42 @@
             }
         }
 		
-	@page { margin:  15px 10px; }
-	body { margin: 15px 10px; 
+	@page { margin: 15px 20px 5px 20px;}
+	body { margin: 15px; 
 	font-family: 'Poppins';
+	font-size:12px;
 	}
+	
+		header {
+                position: fixed;
+				top: -10px; 
+                left: 0px;
+                right: 0px;
+                height: 30px;
+                font-size: 11px !important;
+                text-align: center;
+                line-height: 25px;
+            }
+
+            footer {
+                position: fixed; 
+				 bottom: 20px; 
+                left: 0px; 
+                right: 0px;
+                height: 30px; 
+				margin-bottom:-10px;
+                font-size: 11px !important;
+                text-align: center;
+                line-height: 25px;
+            }
+
+			footer .page-number:after { content: counter(page); }
+			
+        .header img {
+            width: 200px;
+            float: left;
+        }
+
 	
 	table td {	padding-left:10px;	}
 	.pr-1{padding-right:.7rem;}
@@ -96,15 +120,16 @@
 	.w-20	{	width:20%;	}
 	.w-15 { width:15%;}
 	.td-border	{	border:.05rem solid #000;	}
+	.mt-1{margin-top:1rem;}
 	.mt-2{margin-top:2rem;}
 	.mt-3	{	margin-top:3rem;	}
 	.mb-1	{	margin-bottom:1.5rem;	}
 	.h-3	{	height:2rem;	}
 	.h-5	{	height:5rem;	}
-	.sub-title	{	font-size:20px;		color:#c7870f;	}
-	.sub-title-2{	font-size:18px;		background:#c7870f;	}
+	.sub-title	{	font-size:15px;		color:#c7870f;	}
+	.sub-title-2{	font-size:15px;		background:#c7870f;	}
 	.col-w-60	{	width:60%;	}
-	 h2	{		font-size:20px;	}
+	 h2	{		font-size:15px;	}
 	.tb-border	{	border:.05rem solid #000;	}
 	.br-right	{	border-right:.05rem solid #000;	}
 	.br-left	{	border-left:.05rem solid #000;	}
@@ -112,18 +137,32 @@
 	.br-bottom	{	border-bottom:.05rem solid #000;	}
 	.f-weight{	font-weight:500;}
 	.lh-35{	height:35px;}
-	 ul li{	line-height:30px;}
+	 ul li{	line-height:28px;}
 
     </style>
 	
 </head>
 
-<body style="font-family: 'Poppins';">
+<body style="font-family: 'Poppins'; font-size:12px;">
+
+	<header>
+		<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;">Ez Bizz Corporate Services LLC</td><td style="font-size:11px;text-align:center;width:33.3%;">Business Proposal</td><td style="font-size:11px;text-align:right;width:33.3%;">{{date('m-d-Y h:i A')}}</td></tr>
+		</table>
+	</header>
+	
+	<footer>
+	<table width="100%" >
+		<tr><td style="font-size:11px;width:33.3%;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</td><td style="font-size:11px;text-align:center;width:33.3%;">www.ezbizzsetup.com</td><td style="font-size:11px;text-align:right;width:33.3%;"><span class="page-number"> </span></td></tr>
+	</table>
+	</footer>
+	
+
     <div class="page">
-        <div class="page-header">
+
 		<table style="width:100%;" >
-		<tr><td>
-            <div class="logo"><img src="{{public_path('/assets/images/ezbizz-logo.png')}}" alt="Logo">	</div>
+		<tr><td >
+            <div class="logo"><img src="{{public_path('/assets/images/ezbizz-logo.png')}}" style="width:150px" alt="Logo"></div>
 			</td>
 			<td style="text-align:right;">
                 <p style="margin:5px 0px 5px 0px;">+{{$user_dt->country_code." ".$user_dt->mobile_number}}</p>
@@ -135,42 +174,36 @@
 			
 			</table>
 
-			<table class="mt-2" style="width:100%;" >
-			<tr style="height:70px;"><td >&nbsp;</td><td style="width:60%;">
+			<table class="mt-1" style="width:100%;" >
+			<tr style="height:40px;"><td >&nbsp;</td><td style="width:60%;">
 					<img src="{{public_path('/uploads/line.png')}}" style="width:100%;">
 			</td></tr>	
 			</table>
 
+		<div class="mt-1">
+		    <div style="position:absolute;z-index:999999;font-size:80px;color:#fff;margin:50px 0px 0px 20px;"> BUSINESS <br>PROPOSAL </div>
+			<img src="{{public_path('/uploads/').$banner->banner}}" style="width:100%;height:350px;"> 
 
         </div>
 		
-		<div class=" mt-2">
-		    <div style="position:absolute;z-index:999999;font-size:100px;color:#fff;margin:50px 0px 0px 20px;"> BUSINESS <br>PROPOSAL </div>
-			<img src="{{public_path('/uploads/').$banner->banner}}" style="width:100%;height:400px;"> 
-
-        </div>
-		
-		<table style="width:100%;margin-left:-15px;" class="mt-2" >
+		<table style="width:100%;margin-left:-15px; margin-top:20px;" >
 			<tr><td style="width:60%;"><img src="{{public_path('/uploads/line.png')}}" style="width:100%;"> </td><td style="text-align:right;">&nbsp;</td></tr>
 		</table>
 		
 		
-        <div class="proposal" style="margin-top:50px;">
-		
+        <div  style="margin-top:20px;">
             <table  style="width:100%;" cellspacing=0>
-				<tr><td colspan=2 class="w-50 sub-title" height="50px">Quotation Prepared BY</td><tr>
+				<tr><td colspan=2 class="w-50 sub-title" height="30px">Quotation Prepared BY</td><tr>
 				<tr ><td class="w-50 td-border" >Business Consultant Name</td><td class="w-50 td-border">{{ucwords($user_name)}} </td></tr>
 			</table>
 		</div>
-	</div>
-		
-		<div class="page proposal" >
-			<table style="width:100%;" cellspacing=0>
-				<tr><td colspan=2 class="sub-title mb-1" style="height:60px;" >To :</td><tr>
+
+			<table style="width:100%;" cellspacing=0 class="mt-1">
+				<tr><td colspan=2 class="sub-title" style="height:35px;" >To :</td><tr>
 				<tr ><td class="w-50 tb-border">Customer Name</td><td class="w-50 tb-border">{{$prop->customer_name}}</td></tr>
 			</table>
 			
-			<table class="mt-3 " style="width:100%;height:50px;" cellspacing=0>
+			<table class="mt-2 " style="width:100%;height:30px;" cellspacing=0>
 				<tr><td colspan=4 class="sub-title">Customer Details :</td></tr>
 			</table>
 						
@@ -195,8 +228,13 @@
 				</tr>
 				
 			</table>
+			
+		
+	</div>
+		
+	<div class="page " >
 
-	<div class="mt-3">
+	<div class="mt-1">
 
 		@foreach($data['value_headings'] as $row)
 		
@@ -205,7 +243,7 @@
 				$values=\App\Models\ProposalValue::where('proposal_id',$prop->id)->where('proposal_value_heading_id',$row->id)->get();
 			@endphp
 		@if(!$values->isEmpty())
-			<table class="tb-border mt-3" style="width:100%;" cellspacing=0>
+			<table class="tb-border mt-1" style="width:100%;" cellspacing=0>
 			<tr><td colspan=4 class="sub-title-2 br-bottom" >{{$row->value_heading}}</td></tr>
 
 				@foreach($values as $r)
@@ -253,20 +291,20 @@
 		$net_total=$prop->total_amount-$prop->discount;
 		@endphp
 		
-		<table class="tb-border mt-3"  style="width:100%;" cellspacing=0>
+		<table class="tb-border mt-1"  style="width:100%;" cellspacing=0>
 		<tr class="sub-title-2"><td >Sub Total</td><td class="pr-1" style="width:195px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->total_amount,2,'.',',')}}</td></tr>
 		</table>
 		
-		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
+		<table class="tb-border mt-1" style="width:100%;" cellspacing=0>
 		<tr class="sub-title-2"><td >Discount</td><td  class="pr-1" style="width:195px;text-align:right;font-weight:500;" >{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($prop->discount,2,'.',',')}}</td></tr>
 		</table>
 		
-		<table class="tb-border mt-2" style="width:100%;" cellspacing=0>
+		<table class="tb-border mt-1" style="width:100%;" cellspacing=0>
 		<tr class="sub-title-2"><td ><b>Net Total<b></td><td  class="pr-1" style="width:195px;text-align:right;font-weight:500;" ><b>{{$r->currency}}&nbsp;&nbsp;&nbsp;{{number_format($net_total,2,'.',',')}}</b></td></tr>
 		</table>
 				
     
-        <h2 class="sub-title f-weight mt-3">Special Services:</h2>
+        <h2 class="sub-title f-weight mt-1">Special Services:</h2>
 		
 		<ul style="width:100%;">
 		@foreach($data['special_service'] as $row)
@@ -274,17 +312,23 @@
 		@endforeach
 		</ul>
 
-        <h2 class="sub-title f-weight mt-3">Other Services</h2>
-        <ul style="width:100%;">
+        <h2 class="sub-title f-weight mt-1">Other Services</h2>
+        <table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
+		<ul style="margin-top:0px;">
 		@foreach($data['other_service'] as $row)
-            <li> {{$row->other_service}}</li>
+            <li style="height:30px;">{{$row->other_service}}</li>
 		@endforeach
-		</ul>
+		</td></tr></table>
+	
+	</div>
 
-		<div style="height:40px;">&nbsp;</div>
+	</div>
+	
+	<div class="page" >
+	
 		
-		
-        <h2 class="sub-title f-weight mt-3" >Bank Details</h2>
+        <h2 class="sub-title f-weight mt-2" >Bank Details</h2>
 		<table style="width:100%;" class="tb-border" cellspacing=0 >
 		<tr><td class="w-50 sub-title-2 br-right">Bank Account Details - Currency AED</td><td class="w-50 sub-title-2">Bank Account Details - Currency USD</td></tr>
 		<tr>
@@ -319,40 +363,50 @@
 		</tr>
 		</table>
 		
-		<h2 class="sub-title f-weight mt-3">Documents Required</h2>	
+		<h2 class="sub-title f-weight mt-1">Documents Required</h2>	
 		
-        <ul>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
+        <ul style="margin-top:0px;">
 		@foreach($data['documents'] as $row)
 		    <li>{{$row->document_value}}</li>
 		@endforeach
         </ul>
+		</td></tr></table>
 
-        <h2 class="sub-title f-weight mt-3">Process & Timeline:</h2>
-
-        <ul>
+        <h2 class="sub-title f-weight mt-1">Process & Timeline:</h2>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
+        <ul style="margin-top:0px;">
 		@foreach($data['timeline'] as $row)
 		    <li>{{$row->process_timeline}}</li>
 		@endforeach
         </ul>
-				
-		<h2 class="sub-title f-weight mt-3">Notes:</h2>
+		</td></tr></table>
 		
-        <ul>
+		<h2 class="sub-title f-weight mt-1">Notes:</h2>
+		<table width="100%" style="border:.1rem solid #c4c4c4;">
+        <tr><td>
+        <ul style="margin-top:0px;">
 		@foreach($data['notes'] as $row)
 		    <li>{{$row->note}}</li>
 		@endforeach
         </ul>
-		
-		
-		<h2 class="sub-title f-weight mt-3">Conditions:</h2>
-		
-        <ul>
-		
-		@foreach($data['conditions'] as $row)
-		    <li>{{$row->condition}}</li>
-		@endforeach
-        </ul>
+		</td><tr></table>
 
+		</div>
+				
+	<div class="page" >
+
+		<h2 class="sub-title f-weight ">Conditions:</h2>
+		<div width="100%" style="font-size:12px !important;border:.1rem solid #c4c4c4;">
+        <ul style="margin-top:0px;margin-bottom:0px;">
+		@foreach($data['conditions'] as $row)
+		    <li style="font-size:11px !important;margin:0px;padding:0px;line-height:18px !important;"><span style="color:{{$row->text_color}}">{{$row->condition}}</span></li>
+		@endforeach
+		</ul>
+        </div>
+		
 		<h2 class="sub-title f-weight mt-3">I acknowledge that I have read and understood.</h2>
 
 		<table style="width:100%;" cellspacing=15>
@@ -374,6 +428,7 @@
 
 
     </div>
+
 	</div>
 			
 </body>

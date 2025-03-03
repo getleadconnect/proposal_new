@@ -85,14 +85,20 @@
 								<form  id="addCondition" >
 										@csrf
 										<div class="row" >
-											<div class="col-2 col-lg-2 col-xl-2 col-xxl-2 col-form-label">
+											<div class="col-8 col-lg-8 col-xl-8 col-xxl-8">
 												<label for="Designation" class="form-label mb-2">Conditions <span class="required">*</span></label>
-											</div>
-											<div class="col-6 col-lg-6 col-xl-6 col-xxl-6">
 												<textarea class="form-control"  name="condition" id="condition"  placeholder="heading" required> </textarea>
+											</div>
+											<div class="col-1 col-lg-1 col-xl-1 col-xxl-1">
+												<label for="text_color" class="form-label mb-2">Color</label>
+												<select class="form-control" name="text_color" id="text_color" placeholder="color">
+												<option value="#212529" selected>Black</option>
+												<option value="#f71616"><span style="color:#f71616">Red </span></option>
+												</select>
 											</div>
 										
 											<div class="col-lg-2 col-xl-2 col-xxl-2">
+											<label for="text_color" class="form-label mb-2" style="width:100%;">&nbsp;&nbsp;</label>
 											<button class="btn btn-primary"  type="submit"> Add </button>
 											</div>
 										</div>

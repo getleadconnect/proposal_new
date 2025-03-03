@@ -1404,6 +1404,7 @@ public function saveCondition(Request $request)
 				$data=[
 					'vendor_id'=>$vendor_id,
 					'condition'=>$request->condition,
+					'text_color'=>$request->text_color,
 				];
 	
 				$result=ProposalCondition::create($data);
@@ -1435,7 +1436,7 @@ public function saveCondition(Request $request)
         return Datatables::of($serv)
 		->addIndexColumn()
 		->addColumn('condition', function ($row) {
-			return strtoupper($row->condition);
+			return "<span style='color:".$row->text_color.";'>".strtoupper($row->condition)."</span>";
         })
 		
         ->addColumn('action', function ($row)
@@ -1450,7 +1451,7 @@ public function saveCondition(Request $request)
                         </div>';
 			return $action;
         })
-        ->rawColumns(['action'])
+        ->rawColumns(['action','condition'])
         ->make(true);
     }
 
