@@ -69,6 +69,8 @@ Route::controller(ProposalController::class)->group(function() {
 	Route::get('/delete-proposal/{id}', 'destroy')->name('delete-proposal');
 	
 	
+	
+	
 	/*Route::get('/new-proposal', 'newProposal')->name('new-proposal');
 	Route::post('/save-proposal-temp-item', 'saveProposalTempItem')->name('save-proposal-temp-item');
 	Route::get('/get-proposal-temp-items', 'getProposalTempItems')->name('get-proposal-temp-items');
@@ -82,12 +84,14 @@ Route::controller(NewProposalController::class)->group(function() {
 	Route::get('/proposal/create', 'index')->name('new-proposal');
 	Route::get('/view-proposal-values', 'viewProposalTempValues')->name('view-proposal-values');
 	Route::post('/save-proposal-value', 'store')->name('save-proposal-value');
-	Route::get('/delete-proposal-value/{id}', 'destroy')->name('delete-proposal-value');
+	Route::get('/delete-proposal-temp-value/{id}', 'destroy')->name('delete-proposal-temp-value');
 	Route::post('/save-new-proposal', 'saveNewProposal')->name('save-new-proposal');
 	Route::get('/get-customer/{id}', 'getCustomer')->name('get-customer');
 	
+	//edit
 	Route::get('/edit-proposal/{id}', 'editProposal')->name('edit-proposal');
 	Route::get('/view-proposal-values-for-edit/{id}', 'viewProposalValuesForEdit')->name('view-proposal-values-for-edit');
+	Route::get('/delete-proposal-value/{id}', 'deleteProposalValue')->name('delete-proposal-value');  
 	Route::post('/update-proposal-customer', 'updateProposalAndCustomer')->name('update-proposal-customer');
 	Route::post('/update-proposal-item-value', 'updateProposalItemValue')->name('update-proposal-item-value');
 	Route::post('/save-new-proposal-item', 'addNewProposalItem')->name('save-new-proposal-item');

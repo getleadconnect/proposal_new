@@ -98,7 +98,7 @@ class ProposalController extends Controller
 					})
 					
 					->addColumn('action', function($row){
-						$edit_path = url('users/edit-proposal',$row->id);
+
 						$del_path = url('users/delete-proposal',$row->id);
 						$view_temp = url('users/view-proposal-template',$row->id);
 						$gen_pdf = url('users/generate-pdf',$row->id);
@@ -106,7 +106,6 @@ class ProposalController extends Controller
 						$btn = '<div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
 								<a href="'.route('users.edit-proposal',$row->id).'" class="btn btn-white btn-edit" title="Edit"><i class="fa fa-edit" aria-hidden="true"></i></a>&nbsp;
 								<a href="'.$gen_pdf.'" class="btn btn-white btn-print" title="Download PDF"><i class="fa fa-download" aria-hidden="true"></i></a>&nbsp;
-								<!--<a href="'.$edit_path.'" class="btn btn-white  btn-edit" id="'.$row->id.'"><i class="fa fa-edit" aria-hidden="true" title="Edit"></i></a>&nbsp;-->
 								<!--<a href="'.$view_temp.'" target="_blank" class="btn btn-white btn-view"><i class="fa fa-eye" aria-hidden="true" title="view"></i></a>&nbsp;-->
 								<a href="javascript:;" class="btn btn-white btn-delete" id="'.$row->id.'"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></a>
 								</div>';

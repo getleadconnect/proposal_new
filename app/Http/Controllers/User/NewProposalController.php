@@ -163,7 +163,7 @@ public function destroy($id)
 {
 	try
 	{
-		$res=ProposalValue::where('id',$id)->delete();
+		$res=ProposalTempValue::where('id',$id)->delete();
 		
 		if($res)
 		{   
@@ -537,6 +537,26 @@ public function addNewProposalItem(Request $request)
 }
 
 
+public function deleteProposalValue($id)
+{
+	try
+	{
+		$res=ProposalValue::where('id',$id)->delete();
+		
+		if($res)
+		{   
+			return response()->json(['msg'=>'Proposal value successfully removed.','status'=>true]);
+		}
+		else
+		{
+			return response()->json(['msg'=>'Something wrong, Try again.','status'=>false]);
+		}
+	}
+	catch(\Exception $e)
+	{
+		return response()->json(['msg'=>$e->getMessage(),'status'=>false]);
+	}
+}
 
 
 

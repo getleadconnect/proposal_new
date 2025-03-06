@@ -647,7 +647,7 @@ $('#datatable tbody').on('click','.del-item',function()
 		var tid=$(this).attr('id');
 		
 		  $.ajax({
-          url: "{{url('users/delete-proposal-value')}}"+'/'+tid,
+          url: "{{url('users/delete-proposal-temp-value')}}"+'/'+tid,
           type: 'get',
 		  dataType: 'json',
           //data:{'track_id':tid},

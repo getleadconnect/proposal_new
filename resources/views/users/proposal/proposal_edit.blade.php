@@ -705,8 +705,6 @@ var validate1=$('#addNewProposalItem').validate({
 
 
 
-
-
 $('#datatable tbody').on('click','.edit-banner',function()
 {
 
